@@ -1,9 +1,60 @@
 .background {
   height: 100%;
   width: 100%;
-  background-image: url("../../../public/Images/background.png");
+  background-image: url("../../../public/Images/bg.png");
   background-size: cover;
-  background-position :left;
+  background-position: center;
+
   position: fixed;
   margin: 0px;
+  font-family: "Genos", sans-serif;
+
+  .bg-overlay {
+    position: fixed;
+    z-index: -11;
+    width: 100vw;
+    height: 100vh;
+    // backdrop-filter: blur(4px);
+    background-color: rgba(0, 0, 0, 0.3);
+  }
 }
+
+.background::before, .background::after {
+  content: "";
+  position: absolute;
+  z-index: -12;
+  top: 0;
+  left: 0;
+  right: 0;
+  min-height: 100%;
+  min-width: 100%;
+  clip: rect(0, 0, 0, 0);
+  overflow: hidden;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.background::before {
+  left: -6px;
+  animation: glitch-effect 2s infinite linear alternate-reverse;
+  background-image: url("../../../public/Images/bg.png");
+  // filter: grayscale(100%) sepia(100%) saturate(350%) hue-rotate(240deg) brightness(121%) contrast(121%);
+}
+.background::after {
+  left: 6px;
+  animation: glitch-effect 3s infinite linear alternate-reverse;
+  background-image: url("../../../public/Images/bg.png");
+  // filter: grayscale(100%) sepia(100%) saturate(350%) hue-rotate(120deg) brightness(121%) contrast(121%);
+}
+
+$steps: 15;
+
+@keyframes glitch-effect{
+    @for $i from 0 through $steps{
+        #{percentage($i*(1/$steps))}{
+            clip: rect(random(1500) + px, 100vw, random(1500) + px, 0);
+        }
+    }
+}
+

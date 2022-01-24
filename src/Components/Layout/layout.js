@@ -3,7 +3,9 @@ import "./layout.scss";
 function Layout(props) {
   return (
     <>
-      <div className="background">{props.children}</div>
+      <div className="background">
+        <div className="bg-overlay"></div>
+        {props.children}</div>
     </>
   );
 }

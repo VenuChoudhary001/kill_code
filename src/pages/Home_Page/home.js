@@ -9,21 +9,11 @@ function Home() {
           <div className="killing">THE KILLING BEGINS ON 1ST FEBRUARY</div>
         </div>
         <div className="buttonWrapper">
-          <div className="button">
-            <a href="/">
-              <p>
-                <span className="bg"></span>
-                <span className="base"></span>
-                <span className="text">Register</span>
-              </p>
-            </a>
-            <a className="white" href="/">
-              <p>
-                <span className="bg"></span>
-                <span className="base"></span>
-                <span className="text">Log in</span>
-              </p>
-            </a>
+          <div className="registerButton">
+            REGISTER
+          </div>
+          <div className="loginButton">
+            LOGIN
           </div>
         </div>
       </div>
