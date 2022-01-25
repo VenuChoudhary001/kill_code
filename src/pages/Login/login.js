@@ -8,7 +8,7 @@ function Login() {
   useEffect(() => {
     if(localStorage.getItem("tkn") && localStorage.getItem("tkn")!==undefined)
       navigate('/timer/')
-  }, [])
+  }, [navigate])
 
   const [form, setForm] = useState({
     username:"",

@@ -11,7 +11,7 @@ function Registration() {
       localStorage.getItem("tkn") !== undefined
     )
       navigate("/timer/");
-  }, []);
+  }, [navigate]);
 
   const [msg,setMsg] = useState("");
 

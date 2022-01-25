@@ -8,7 +8,7 @@ function Timer() {
   useEffect(() => {
     if(!localStorage.getItem("tkn") || localStorage.getItem("tkn")===undefined)
       navigate('/')
-  }, [])
+  }, [navigate])
 
   const [clock, setClock] = useState("00:00:00");
   useEffect(() => {
@@ -73,7 +73,7 @@ function Timer() {
           <div className="killcode">KILLCODE</div>
           <div className="killing">THE KILLING BEGINS ON 1ST FEBRUARY</div>
         </div>
-        
+
         <div className="timerWrap">
           
             <div className="labelsTime">

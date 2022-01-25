@@ -9,7 +9,7 @@ function Home() {
   useEffect(() => {
     if(localStorage.getItem("tkn") && localStorage.getItem("tkn")!==undefined)
       navigate('/timer/')
-  }, [])
+  }, [navigate])
 
   return (
     <>
