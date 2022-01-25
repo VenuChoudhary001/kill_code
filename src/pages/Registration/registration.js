@@ -1,7 +1,10 @@
 import { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 import "./registration.scss";
 
 function Registration() {
+  const navigate = useNavigate();
+
   const [form, setForm] = useState({
     teamname: "",
     password: "",
@@ -28,7 +31,7 @@ function Registration() {
       .then((data) => {
         console.log("Success:", data);
         localStorage.setItem("tkn",data.token);
-      
+        navigate('/timer/');
       })
       .catch((error) => {
         console.error("Error:", error);
