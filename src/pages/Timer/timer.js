@@ -1,7 +1,15 @@
 import "./timer.scss";
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Timer() {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if(!localStorage.getItem("tkn") || localStorage.getItem("tkn")===undefined)
+      navigate('/')
+  }, [])
+
   const [clock, setClock] = useState("00:00:00");
   useEffect(() => {
     const getCountdown = async () => {
@@ -34,13 +42,40 @@ function Timer() {
     }
 
     getCountdown();
-  });
+  }, [clock]);
+
+  const Logout = () => {
+    fetch("https://killcode.myrealms.in/quiz/logout", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization":"Token " + localStorage.getItem("tkn")
+      },
+      body: {}
+    })
+      .then((response) => {
+        if (response.status !== 204) {
+          console.log(response);
+        } else {
+          localStorage.removeItem("tkn");
+          navigate("/");
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  }
 
   return (
     <>
       <div className="timer">
-        <div className="card">
-          <div className="cardHead">
+      <div className="text">
+          <div className="killcode">KILLCODE</div>
+          <div className="killing">THE KILLING BEGINS ON 1ST FEBRUARY</div>
+        </div>
+        
+        <div className="timerWrap">
+          
             <div className="labelsTime">
               <span>{clock[0]}</span>
               <span>{clock[1]}</span>
@@ -53,7 +88,10 @@ function Timer() {
               <span>Mins</span>
               <span>Secs</span>
             </div>
-          </div>
+          
+        </div>
+        <div className="registerButton" onClick={Logout}>
+          Logout
         </div>
       </div>
     </>

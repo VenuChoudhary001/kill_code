@@ -1,13 +1,25 @@
-import { useState } from "react";
-import { useNavigate } from 'react-router-dom';
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import "./registration.scss";
 
 function Registration() {
   const navigate = useNavigate();
 
-  const [form, setForm] = useState({
-    teamname: "",
+  useEffect(() => {
+    if (
+      localStorage.getItem("tkn") &&
+      localStorage.getItem("tkn") !== undefined
+    )
+      navigate("/timer/");
+  }, []);
+
+  const [msg,setMsg] = useState("");
+
+  const [user, setUser] = useState({
+    username: "",
     password: "",
+  });
+  const [form, setForm] = useState({
     participant1: "",
     participant1_email: "",
     participant2: "",
@@ -18,20 +30,57 @@ function Registration() {
     participant4_email: "",
   });
 
-  const submitReg = () => {
+  const submitReg = async () => {
     console.log(form);
-    fetch("http://139.59.45.195/quiz/register/", {
+    const dat = {
+      user: {
+        username: user.username,
+        password: user.password,
+      },
+      participant1: form.participant1,
+      participant1_email: form.participant1_email,
+      participant2: form.participant2,
+      participant2_email: form.participant2_email,
+      participant3: form.participant3,
+      participant3_email: form.participant3_email,
+      participant4: form.participant4,
+      participant4_email: form.participant4_email,
+    };
+    console.log(dat);
+    fetch("https://killcode.myrealms.in/quiz/register", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(form),
+      body: JSON.stringify(dat),
     })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Success:", data);
-        localStorage.setItem("tkn",data.token);
-        navigate('/timer/');
+      .then(async (response) => {
+        if (response.status !== 200) {
+          console.log(response);
+          const resp = await response.json();
+          console.log(resp);
+          if(resp.participant1_email) 
+            setMsg(resp.participant1_email[0])
+          else if(resp.participant2_email) 
+            setMsg(resp.participant2_email[0])
+          else if(resp.participant3_email) 
+            setMsg(resp.participant3_email[0])
+          else if(resp.participant4_email) 
+            setMsg(resp.participant4_email[0])
+          else
+            setMsg(resp);
+          
+        } else {
+          const data = await response.json();
+          console.log("Success:", data);
+
+          if (data.token && data.token !== undefined) {
+            localStorage.setItem("tkn", data.token);
+            navigate("/timer/");
+          } else {
+            console.log("error");
+          }
+        }
       })
       .catch((error) => {
         console.error("Error:", error);
@@ -46,6 +95,7 @@ function Registration() {
       </div>
       <div className="card">
         <div className="cardHead">REGISTRATION</div>
+        <div className="msg">{msg}</div>
         <form>
           <div className="inputGroup">
             <input
@@ -53,7 +103,7 @@ function Registration() {
               name="name"
               placeholder="Team Name"
               onChange={(e) => {
-                setForm({ ...form, teamname: e.target.value });
+                setUser({ ...user, username: e.target.value });
               }}
             />
             <input
@@ -61,7 +111,7 @@ function Registration() {
               name="password"
               placeholder="Password"
               onChange={(e) => {
-                setForm({ ...form, password: e.target.value });
+                setUser({ ...user, password: e.target.value });
               }}
             />
           </div>
@@ -141,7 +191,6 @@ function Registration() {
               }}
             />
           </div>
-
         </form>
         <div className="registerButton" onClick={submitReg}>
           Submit

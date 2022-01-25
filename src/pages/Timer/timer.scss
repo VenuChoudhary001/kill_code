@@ -1,84 +1,118 @@
 @import "../../styles/global.scss";
-@import url('https://fonts.googleapis.com/css2?family=Changa:wght@400;700&family=Orbitron:wght@500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Audiowide&display=swap");
 
-  .timer {
-    margin-top: 80px;
-
-      .card {
-      background-color: rgba(0, 0, 0, 0.274);
-      backdrop-filter: blur(5px);
-      border-radius: 20px;
-      width: 90%;
-      max-width: 600px;
-      margin: 0 auto;
-      color: white;
-      border: 3px solid #850813;
-      border-top: 8px solid #850813;
-      border-bottom: 8px solid #850813;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-
-      animation-name: glow;
-      animation-duration: 1.5s;
-      animation-iteration-count: infinite;
-      animation-direction: alternate;
-
-
-      @keyframes glow {
+.timer {
+    width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
+    .text {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-end;
+        height: clamp(100px, 30vw, 300px);
+        width: 100%;
+    
+        .killcode {
+          font-family: "Metal Mania", cursive;
+          color: #850813;
+          font-size: clamp(80px, 20.8vw, 230px);
+          letter-spacing: 25px;
+          @media only screen and (max-width:700px) {
+            letter-spacing: 0px;
+          }
+          position: absolute;
+          z-index: -4;
+    
+          animation-name: tglow;
+          animation-duration: 1.5s;
+          animation-iteration-count: infinite;
+          animation-direction: alternate;
+        }
+    
+        @keyframes tglow {
           from {
-              box-shadow: 0px 0px 5px #850813, 0px 0px 5px #850813;
+            text-shadow: 0px 0px 5px #850813, 0px 0px 5px #850813;
           }
-
           to {
-              box-shadow: 0px 0px 20px #850813, 0px 0px 20px #850813;
+            text-shadow: 0px 0px 20px #850813, 0px 0px 20px #850813;
           }
-      }
-
-      .cardHead {
-          color: white;
-          width: 100%;
-          height: 200px;
+        }
+    
+        .killing {
+          min-width: 100vw;
+          color: $white;
+          font-size: clamp(15px, 4.8vw, 50px);
           text-align: center;
-          margin-top: 10px;
-          font-size: 30px;
-          font-weight: 800;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-        .labelsTime {
-            display: flex;
-            font-size: 30px;
-            font-weight: 700;
-            margin: 0px;
-            font-family: 'Orbitron',
-                sans-serif !important;
-                   span {
-                       margin: 0px 30px;
-                       text-decoration: none !important;
-                   }
+          font-family: "Genos", sans-serif;
+          font-weight: 600;
+          position: absolute;
+          margin-bottom: clamp(45px, 12vw, 130px);
+          line-height: 1;
         }
+      }
+  .registerButton {
+    height: 45px;
+    width: 155px;
+    background-color: rgba(0, 0, 0, 0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 20px;
+    border-radius: 40px;
+    border-top: 3px solid white;
+    border-bottom: 3px solid white;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    margin: 20px auto;
 
-     
+    &:hover {
+      background-color: #850813;
+    }
+  }
+  .timerWrap {
+    color: white;
+    width: 100%;
+    height: 100px;
+    text-align: center;
+    margin-top: 10px;
+    font-size: 30px;
+    font-weight: 800;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
-        .labels {
-            display: flex;
-            font-size: 30px;
-            font-weight: 700;
-            margin: 0px;
-            padding-top: 0px;
-            font-family: 'Orbitron',
-                sans-serif !important;
-                  span {
-                      margin: 0px 15px;
-                      padding-top: 0px;
-                      text-decoration: none !important;
-                  }
-        }
-        
+    .labelsTime {
+      display: flex;
+      font-size: clamp(20px, 2.2vw, 30px);
+      font-weight: 700;
+      margin: 0px;
+      font-family: "Audiowide", cursive !important;
+      span {
+        margin: 0px clamp(20px, 2.2vw, 30px);
+        text-decoration: none !important;
       }
     }
+
+    .labels {
+      display: flex;
+      font-size: clamp(15px, 1.8vw, 25px);
+      font-weight: 700;
+      margin: 0px;
+      padding-top: 0px;
+      font-family: "Audiowide", cursive !important;
+      span {
+        margin: 0px clamp(10px, 1.1vw, 15px);
+        padding-top: 0px;
+        text-decoration: none !important;
+      }
+    }
+  }
 }
