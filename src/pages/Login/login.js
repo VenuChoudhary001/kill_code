@@ -9,6 +9,21 @@ function Login() {
 
   const submitLog = () => {
     console.log(form);
+    fetch("http://139.59.45.195/quiz/login/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(form),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Success:", data);
+        localStorage.setItem("tkn",data.token);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
   }
 
   return (
