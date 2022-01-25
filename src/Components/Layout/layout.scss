@@ -36,19 +36,19 @@
 }
 
 .background::before {
-  left: -6px;
+  left: -9px;
   animation: glitch-effect 2s infinite linear alternate-reverse;
   background-image: url("../../../public/Images/bg.png");
   // filter: grayscale(100%) sepia(100%) saturate(350%) hue-rotate(240deg) brightness(121%) contrast(121%);
 }
 .background::after {
-  left: 6px;
+  left: 9px;
   animation: glitch-effect 3s infinite linear alternate-reverse;
   background-image: url("../../../public/Images/bg.png");
   // filter: grayscale(100%) sepia(100%) saturate(350%) hue-rotate(120deg) brightness(121%) contrast(121%);
 }
 
-$steps: 15;
+$steps: 18;
 
 @keyframes glitch-effect{
     @for $i from 0 through $steps{
@@ -56,5 +56,40 @@ $steps: 15;
             clip: rect(random(1500) + px, 100vw, random(1500) + px, 0);
         }
     }
+}
+
+.content {
+  height: 82%;
+}
+
+footer{
+  height: 18%;
+  width: 100%;
+  text-align: center;
+  
+
+  .logos {
+    display: flex;
+  justify-content: center;
+  align-items: center;
+
+    .footIcon {
+      height: 40px;
+      width: auto;
+      margin: 10px;
+    }
+    .footIconSmall {
+      height: 25px;
+      width: auto;
+      margin: 10px;
+    }
+  }
+
+
+  .footText {
+    font-size: 17px;
+    color: white;
+  }
+  
 }
 

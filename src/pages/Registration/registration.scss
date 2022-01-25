@@ -1,12 +1,58 @@
 @import "../../styles/global.scss";
 
 .reg-page {
-    margin-top: 30px;
-.card {
+  margin-top: 30px;
+
+  .text {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    height:clamp(40px, 5.8vw, 80px);
+    width: 100%;
+    margin: 20px 0px;
+    margin-bottom: 30px;
+
+    .killcode {
+      font-family: "Metal Mania", cursive;
+      color: #850813;
+      font-size: clamp(40px, 5.8vw, 80px);
+      position: absolute;
+      z-index: -4;
+
+      animation-name: tglow;
+      animation-duration: 1.5s;
+      animation-iteration-count: infinite;
+      animation-direction: alternate;
+    }
+
+    @keyframes tglow {
+      from {
+        text-shadow: 0px 0px 5px #850813, 0px 0px 5px #850813;
+      }
+      to {
+        text-shadow: 0px 0px 20px #850813, 0px 0px 20px #850813;
+      }
+    }
+
+    .killing {
+      min-width: 100vw;
+      color: $white;
+      font-size: clamp(11px, 1.4vw, 18px);
+      text-align: center;
+      font-family: "Genos", sans-serif;
+      font-weight: 600;
+      position: absolute;
+      margin-bottom: clamp(22px, 2.9vw, 40px);
+      line-height: 1;
+    }
+  }
+
+  .card {
     background-color: rgba(0, 0, 0, 0.274);
     backdrop-filter: blur(5px);
     border-radius: 20px;
-    padding: 20px;
     width: 90%;
     max-width: 600px;
     margin: 0 auto;
@@ -14,46 +60,112 @@
     border: 3px solid #850813;
     border-top: 8px solid #850813;
     border-bottom: 8px solid #850813;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    animation-name: glow;
+      animation-duration: 1.5s;
+      animation-iteration-count: infinite;
+      animation-direction: alternate;
+    
+
+    @keyframes glow {
+      from {
+        box-shadow: 0px 0px 5px #850813, 0px 0px 5px #850813;
+      }
+      to {
+        box-shadow: 0px 0px 20px #850813, 0px 0px 20px #850813;
+      }
+    }
 
     .cardHead {
-        color: white;
-        width: 100%;
-        text-align: center;
-        margin-bottom: 20px;
-        font-size: 30px;
-        font-weight: 800;     
+      color: white;
+      width: 100%;
+      text-align: center;
+      margin-top: 10px;
+      font-size: 30px;
+      font-weight: 800;
     }
-       form {
-               display: flex;
-               flex-direction: column;
-               align-items: center;
-               .name {
-                   margin-bottom : 5px;
-               }
-               input {
-                   width: 400px;
-               }
-                  .registerButton {
-                      height: 40px;
-                      width: 155px;
-                      background-color: rgba(0, 0, 0, 0);
-                      display: flex;
-                      justify-content: center;
-                      align-items: center;
-                      margin: 10px 20px;
-                      border-radius: 40px;
-                      border-top: 3px solid white;
-                      border-bottom: 3px solid white;
-                      color: white;
-                      font-size: 18px;
-                      cursor: pointer;
-                      margin-top: 20px;
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+      max-height: 48vh;
+      overflow-y: scroll;
 
-                      &:hover {
-                          background-color: #850813;
-                      }
-           }
-       }
+      /* width */
+      &::-webkit-scrollbar {
+        width: 10px;
+        border-radius: 3px;
+      }
 
-}
+      /* Track */
+      &::-webkit-scrollbar-track {
+        background: #666;
+        border-radius: 3px;
+      }
+
+      /* Handle */
+      &::-webkit-scrollbar-thumb {
+        background: #850813;
+        border-radius: 3px;
+      }
+
+      /* Handle on hover */
+      &::-webkit-scrollbar-thumb:hover {
+        background: #850813;
+      }
+
+      .inputGroup {
+        width: 100%;
+        display: block;
+        margin: 6px auto;
+
+        .name {
+          font-size: 22px;
+          margin-left: 10px;
+        }
+        input {
+          width: 100%;
+          margin: 7px 0px;
+          background-color: rgba(0, 0, 0, 0);
+          border-radius: 30px;
+          height: 40px;
+          border: 2px solid white;
+          outline: none;
+          padding: 5px 10px;
+          color: white;
+          font-size: 18px;
+
+          &::placeholder {
+            color: #999;
+          }
+        }
+      }
+    }
+    .registerButton {
+      height: 45px;
+      width: 155px;
+      background-color: rgba(0, 0, 0, 0);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 10px 20px;
+      border-radius: 40px;
+      border-top: 3px solid white;
+      border-bottom: 3px solid white;
+      color: white;
+      font-size: 18px;
+      cursor: pointer;
+      margin: 20px auto;
+
+      &:hover {
+        background-color: #850813;
+      }
+    }
+  }
 }

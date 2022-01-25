@@ -1,20 +1,31 @@
+import { useState } from "react";
 import "./login.scss";
 
 function Login() {
+  const [form, setForm] = useState({
+    teamname:"",
+    password:"",
+  })
+
+  const submitLog = () => {
+    console.log(form);
+  }
+
   return (
-    <div className="reg-page">
+    <div className="log-page">
       <div className="card">
         <div className="cardHead">LOG IN</div>
         <form>
-          <label>
-            <div className="name">Team Name:</div>
-            <input type="text" name="name" />
-          </label>
-          <label>
-            <div className="name">Password :</div>
-            <input type="password" name="password" />
-          </label>
-          <div className="registerButton">Submit</div>
+          <div className="inputGroup">
+            <input type="text" name="name" placeholder="Team Name" onChange={(e) => {
+              setForm({...form, teamname:e.target.value})
+            }}/>
+            <input type="password" name="password" placeholder="Password" onChange={(e) => {
+              setForm({...form, password:e.target.value})
+            }}/>
+          </div>
+          
+          <div className="registerButton" onClick={submitLog}>Submit</div>
         </form>
       </div>
     </div>
