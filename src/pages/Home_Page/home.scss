@@ -16,13 +16,17 @@
     flex-direction: column;
     align-items: center;
     justify-content: flex-end;
-    height: clamp(100px, 30vw, 380px);
+    height: clamp(100px, 30vw, 300px);
     width: 100%;
 
     .killcode {
       font-family: "Metal Mania", cursive;
       color: #850813;
-      font-size: clamp(80px, 20.8vw, 300px);
+      font-size: clamp(80px, 20.8vw, 230px);
+      letter-spacing: 25px;
+      @media only screen and (max-width:700px) {
+        letter-spacing: 0px;
+      }
       position: absolute;
       z-index: -4;
 
@@ -44,12 +48,12 @@
     .killing {
       min-width: 100vw;
       color: $white;
-      font-size: clamp(15px, 4.8vw, 55px);
+      font-size: clamp(15px, 4.8vw, 50px);
       text-align: center;
       font-family: "Genos", sans-serif;
       font-weight: 600;
       position: absolute;
-      margin-bottom: clamp(45px, 12vw, 170px);
+      margin-bottom: clamp(45px, 12vw, 130px);
       line-height: 1;
     }
   }
