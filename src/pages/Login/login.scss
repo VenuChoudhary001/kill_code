@@ -3,13 +3,58 @@
 .log-page {
     margin-top: 30px;
 
-    margin-top: 30px;
+    .text {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-end;
+        height:clamp(40px, 5.8vw, 80px);
+        width: 100%;
+        margin: 20px 0px;
+        margin-bottom: 30px;
+    
+        .killcode {
+          font-family: "Metal Mania", cursive;
+          color: #850813;
+          font-size: clamp(40px, 5.8vw, 80px);
+          position: absolute;
+          z-index: -4;
+    
+          animation-name: tglow;
+          animation-duration: 1.5s;
+          animation-iteration-count: infinite;
+          animation-direction: alternate;
+        }
+    
+        @keyframes tglow {
+          from {
+            text-shadow: 0px 0px 5px #850813, 0px 0px 5px #850813;
+          }
+          to {
+            text-shadow: 0px 0px 20px #850813, 0px 0px 20px #850813;
+          }
+        }
+    
+        .killing {
+          min-width: 100vw;
+          color: $white;
+          font-size: clamp(11px, 1.4vw, 18px);
+          text-align: center;
+          font-family: "Genos", sans-serif;
+          font-weight: 600;
+          position: absolute;
+          margin-bottom: clamp(22px, 2.9vw, 40px);
+          line-height: 1;
+        }
+      }
+      
   .card {
     background-color: rgba(0, 0, 0, 0.274);
     backdrop-filter: blur(5px);
     border-radius: 20px;
     width: 90%;
-    max-width: 500px;
+    max-width: 400px;
     margin: 0 auto;
     color: white;
     border: 3px solid #850813;

@@ -19,7 +19,8 @@
   }
 }
 
-.background::before, .background::after {
+.background::before,
+.background::after {
   content: "";
   position: absolute;
   z-index: -12;
@@ -50,28 +51,27 @@
 
 $steps: 18;
 
-@keyframes glitch-effect{
-    @for $i from 0 through $steps{
-        #{percentage($i*(1/$steps))}{
-            clip: rect(random(1500) + px, 100vw, random(1500) + px, 0);
-        }
+@keyframes glitch-effect {
+  @for $i from 0 through $steps {
+    #{percentage($i*(1/$steps))} {
+      clip: rect(random(1500) + px, 100vw, random(1500) + px, 0);
     }
+  }
 }
 
 .content {
   height: 82%;
 }
 
-footer{
+footer {
   height: 18%;
   width: 100%;
   text-align: center;
-  
 
   .logos {
     display: flex;
-  justify-content: center;
-  align-items: center;
+    justify-content: center;
+    align-items: center;
 
     .footIcon {
       height: 40px;
@@ -85,11 +85,8 @@ footer{
     }
   }
 
-
   .footText {
     font-size: 17px;
     color: white;
   }
-  
 }
-
