@@ -59,7 +59,8 @@
     align-items: center;
     flex-wrap: wrap;
     width: 60%;
-
+  a {
+      text-decoration: none;
     .registerButton {
       height: 40px;
       width: 155px;
@@ -79,6 +80,10 @@
           background-color: #850813;
       }
     }
+}
+
+a {
+    text-decoration: none;
     .loginButton {
       height: 40px;
       width: 155px;
@@ -98,5 +103,6 @@
         background-color: #850813;
         }
     }
+}
   }
 }

@@ -1,4 +1,5 @@
 import "./home.scss";
+import { Link } from "react-router-dom";
 
 function Home() {
   return (
@@ -9,12 +10,12 @@ function Home() {
           <div className="killing">THE KILLING BEGINS ON 1ST FEBRUARY</div>
         </div>
         <div className="buttonWrapper">
-          <div className="registerButton">
-            REGISTER
-          </div>
-          <div className="loginButton">
-            LOGIN
-          </div>
+          <Link to="/registration">
+            <div className="registerButton">REGISTER</div>
+          </Link>
+          <Link to="/login">
+            <div className="loginButton">LOGIN</div>
+          </Link>
         </div>
       </div>
     </>
