@@ -63,6 +63,8 @@ function Timer() {
     })
       .then((response) => {
         if (response.status !== 204) {
+          localStorage.removeItem("tkn");
+          navigate("/");
           console.log(response);
         } else {
           localStorage.removeItem("tkn");
