@@ -109,7 +109,7 @@ function Registration() {
   return (
     <div className="reg-page">
       <div className="text">
-        <div className="killcode">KILLCODE</div>
+        <div className="killcode">KILLCODE-II</div>
         <div className="killing">THE KILLINGS BEGIN ON 1ST FEBRUARY</div>
       </div>
       <div className="card">
