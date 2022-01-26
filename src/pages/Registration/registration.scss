@@ -72,20 +72,20 @@
     justify-content: center;
     align-items: center;
 
-    animation-name: glow;
-      animation-duration: 1.5s;
-      animation-iteration-count: infinite;
-      animation-direction: alternate;
+    // animation-name: glow;
+    //   animation-duration: 1.5s;
+    //   animation-iteration-count: infinite;
+    //   animation-direction: alternate;
     
 
-    @keyframes glow {
-      from {
-        box-shadow: 0px 0px 5px #850813, 0px 0px 5px #850813;
-      }
-      to {
-        box-shadow: 0px 0px 20px #850813, 0px 0px 20px #850813;
-      }
-    }
+    // @keyframes glow {
+    //   from {
+    //     box-shadow: 0px 0px 5px #850813, 0px 0px 5px #850813;
+    //   }
+    //   to {
+    //     box-shadow: 0px 0px 20px #850813, 0px 0px 20px #850813;
+    //   }
+    // }
 
     .cardHead {
       color: white;
@@ -105,7 +105,7 @@
 
       /* width */
       &::-webkit-scrollbar {
-        width: 10px;
+        width: 7px;
         border-radius: 3px;
       }
 
@@ -117,14 +117,11 @@
 
       /* Handle */
       &::-webkit-scrollbar-thumb {
-        background: #850813;
+        background: #ffffff;
         border-radius: 3px;
       }
 
-      /* Handle on hover */
-      &::-webkit-scrollbar-thumb:hover {
-        background: #850813;
-      }
+
 
       .inputGroup {
         width: 100%;

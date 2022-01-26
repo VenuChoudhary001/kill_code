@@ -1,7 +1,7 @@
 .background {
   height: 100%;
   width: 100%;
-  background-image: url("../../../public/Images/bg.png");
+  background-image: url("../../../public/Images/bg.jpg");
   background-size: cover;
   background-position: center;
 
@@ -41,25 +41,25 @@
 }
 
 .background::before {
-  left: -5px;
+  left: -3px;
   background-position: center;
 
   @media only screen and (max-width:700px) {
     background-position: -150px 0px;
   }
   animation: glitch-effect 2s infinite linear alternate-reverse;
-  background-image: url("../../../public/Images/bg.png");
+  background-image: url("../../../public/Images/bg.jpg");
   // filter: grayscale(100%) sepia(100%) saturate(350%) hue-rotate(240deg) brightness(121%) contrast(121%);
 }
 .background::after {
-  left: 5px;
+  left: 3px;
   background-position: center;
 
   @media only screen and (max-width:700px) {
     background-position: -150px 0px;
   }
   animation: glitch-effect 3s infinite linear alternate-reverse;
-  background-image: url("../../../public/Images/bg.png");
+  background-image: url("../../../public/Images/bg.jpg");
   // filter: grayscale(100%) sepia(100%) saturate(350%) hue-rotate(120deg) brightness(121%) contrast(121%);
 }
 

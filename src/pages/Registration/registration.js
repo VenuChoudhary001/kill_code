@@ -22,12 +22,20 @@ function Registration() {
   const [form, setForm] = useState({
     participant1: "",
     participant1_email: "",
+    participant1_dc: "",
+    participant1_phone: "",
     participant2: "",
     participant2_email: "",
+    participant2_dc: "",
+    participant2_phone: "",
     participant3: "",
     participant3_email: "",
+    participant3_dc: "",
+    participant3_phone: "",
     participant4: "",
     participant4_email: "",
+    participant4_dc: "",
+    participant4_phone: "",
   });
 
   const submitReg = async () => {
@@ -39,12 +47,20 @@ function Registration() {
       },
       participant1: form.participant1,
       participant1_email: form.participant1_email,
+      participant1_dc: form.participant1_dc,
+      participant1_phone: form.participant1_phone,
       participant2: form.participant2,
       participant2_email: form.participant2_email,
+      participant2_dc: form.participant2_dc,
+      participant2_phone: form.participant2_phone,
       participant3: form.participant3,
       participant3_email: form.participant3_email,
+      participant3_dc: form.participant3_dc,
+      participant3_phone: form.participant3_phone,
       participant4: form.participant4,
       participant4_email: form.participant4_email,
+      participant4_dc: form.participant4_dc,
+      participant4_phone: form.participant4_phone,
     };
     console.log(dat);
     fetch("https://killcode.myrealms.in/quiz/register", {
@@ -133,6 +149,22 @@ function Registration() {
                 setForm({ ...form, participant1_email: e.target.value });
               }}
             />
+            <input
+              type="text"
+              name="discord"
+              placeholder="Discord ID"
+              onChange={(e) => {
+                setForm({ ...form, participant1_dc: e.target.value });
+              }}
+            />
+            <input
+              type="number"
+              name="phone"
+              placeholder="Phone (Whatsapp)"
+              onChange={(e) => {
+                setForm({ ...form, participant1_phone: e.target.value });
+              }}
+            />
           </div>
           <div className="inputGroup">
             <div className="name">Member 2:*</div>
@@ -150,6 +182,22 @@ function Registration() {
               placeholder="Email"
               onChange={(e) => {
                 setForm({ ...form, participant2_email: e.target.value });
+              }}
+            />
+            <input
+              type="text"
+              name="discord"
+              placeholder="Discord ID"
+              onChange={(e) => {
+                setForm({ ...form, participant2_dc: e.target.value });
+              }}
+            />
+            <input
+              type="number"
+              name="phone"
+              placeholder="Phone (Whatsapp)"
+              onChange={(e) => {
+                setForm({ ...form, participant2_phone: e.target.value });
               }}
             />
           </div>
@@ -171,6 +219,22 @@ function Registration() {
                 setForm({ ...form, participant3_email: e.target.value });
               }}
             />
+            <input
+              type="text"
+              name="discord"
+              placeholder="Discord ID"
+              onChange={(e) => {
+                setForm({ ...form, participant3_dc: e.target.value });
+              }}
+            />
+            <input
+              type="number"
+              name="phone"
+              placeholder="Phone (Whatsapp)"
+              onChange={(e) => {
+                setForm({ ...form, participant3_phone: e.target.value });
+              }}
+            />
           </div>
           <div className="inputGroup">
             <div className="name">Member 4:</div>
@@ -188,6 +252,22 @@ function Registration() {
               placeholder="Email"
               onChange={(e) => {
                 setForm({ ...form, participant4_email: e.target.value });
+              }}
+            />
+            <input
+              type="text"
+              name="discord"
+              placeholder="Discord ID"
+              onChange={(e) => {
+                setForm({ ...form, participant4_dc: e.target.value });
+              }}
+            />
+            <input
+              type="number"
+              name="phone"
+              placeholder="Phone (Whatsapp)"
+              onChange={(e) => {
+                setForm({ ...form, participant4_phone: e.target.value });
               }}
             />
           </div>

@@ -1,11 +1,14 @@
 import "./layout.scss";
 
 function Layout(props) {
+
   return (
     <>
       <div className="background">
         <div className="bg-overlay"></div>
+        
         <div className="content">{props.children}</div>
+        
         <footer>
           <div className="logos">
           <a href="https://www.facebook.com/debatingsociety3103.nitd/" target="_blank" rel="noreferrer" >
