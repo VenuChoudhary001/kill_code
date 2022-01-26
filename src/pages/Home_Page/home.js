@@ -16,7 +16,7 @@ function Home() {
       <div className="homePage">
         <div className="text">
           <div className="killcode">KILLCODE</div>
-          <div className="killing">THE KILLING BEGINS ON 1ST FEBRUARY</div>
+          <div className="killing">THE KILLINGS BEGIN ON 1ST FEBRUARY</div>
         </div>
         <div className="buttonWrapper">
           <Link to="/registration">

@@ -54,7 +54,7 @@ function Login() {
     <div className="log-page">
       <div className="text">
           <div className="killcode">KILLCODE</div>
-          <div className="killing">THE KILLING BEGINS ON 1ST FEBRUARY</div>
+          <div className="killing">THE KILLINGS BEGIN ON 1ST FEBRUARY</div>
         </div>
       <div className="card">
         <div className="cardHead">LOG IN</div>
