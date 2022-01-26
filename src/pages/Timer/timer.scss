@@ -36,12 +36,12 @@
         }
     
         @keyframes tglow {
-          from {
-            text-shadow: 0px 0px 5px #850813, 0px 0px 5px #850813;
-          }
-          to {
-            text-shadow: 0px 0px 20px #850813, 0px 0px 20px #850813;
-          }
+            from {
+                text-shadow: 0px 0px 5px #8508128a, 0px 0px 5px #850813;
+              }
+              to {
+                text-shadow: 0px 0px 20px #85081277, 0px 0px 20px #850813;
+              }
         }
     
         .killing {
@@ -71,6 +71,7 @@
     font-size: 18px;
     cursor: pointer;
     margin: 20px auto;
+    margin-top: 40px;
 
     &:hover {
       background-color: #850813;
@@ -91,7 +92,7 @@
 
     .labelsTime {
       display: flex;
-      font-size: clamp(20px, 2.2vw, 30px);
+      font-size: clamp(20px, 3.5vw, 50px);
       font-weight: 700;
       margin: 0px;
       font-family: "Audiowide", cursive !important;
@@ -103,7 +104,7 @@
 
     .labels {
       display: flex;
-      font-size: clamp(15px, 1.8vw, 25px);
+      font-size: clamp(15px, 2.8vw, 40px);
       font-weight: 700;
       margin: 0px;
       padding-top: 0px;

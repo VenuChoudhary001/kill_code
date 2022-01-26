@@ -30,18 +30,18 @@
       position: absolute;
       z-index: -4;
 
-      animation-name: tglow;
+      animation-name: hglow;
       animation-duration: 1.5s;
       animation-iteration-count: infinite;
       animation-direction: alternate;
     }
 
-    @keyframes tglow {
+    @keyframes hglow {
       from {
-        text-shadow: 0px 0px 5px #850813, 0px 0px 5px #850813;
+        text-shadow: 0px 0px 5px #8508128a, 0px 0px 5px #850813;
       }
       to {
-        text-shadow: 0px 0px 20px #850813, 0px 0px 20px #850813;
+        text-shadow: 0px 0px 20px #85081277, 0px 0px 20px #850813;
       }
     }
 

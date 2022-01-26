@@ -5,6 +5,10 @@ import { Link } from "react-router-dom";
 
 function Home() {
   const navigate = useNavigate();
+  let audio = new Audio("among.mp3");
+  const start = () => {
+    audio.play()
+  }
 
   useEffect(() => {
     if(localStorage.getItem("tkn") && localStorage.getItem("tkn")!==undefined)
@@ -20,10 +24,10 @@ function Home() {
         </div>
         <div className="buttonWrapper">
           <Link to="/registration">
-            <div className="registerButton">REGISTER</div>
+            <div className="registerButton" onClick={start}>REGISTER</div>
           </Link>
           <Link to="/login">
-            <div className="loginButton">LOGIN</div>
+            <div className="loginButton" onClick={start}>LOGIN</div>
           </Link>
         </div>
       </div>

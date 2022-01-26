@@ -5,6 +5,8 @@ import "./registration.scss";
 function Registration() {
   const navigate = useNavigate();
 
+  let audio = new Audio("among.mp3");
+
   useEffect(() => {
     if (
       localStorage.getItem("tkn") &&
@@ -39,6 +41,7 @@ function Registration() {
   });
 
   const submitReg = async () => {
+    audio.play();
     console.log(form);
     const dat = {
       user: {

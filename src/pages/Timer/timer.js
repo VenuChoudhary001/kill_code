@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 function Timer() {
   const navigate = useNavigate();
 
+  let audio = new Audio("among.mp3");
+
   useEffect(() => {
     if (
       !localStorage.getItem("tkn") ||
@@ -53,6 +55,7 @@ function Timer() {
   }, []);
 
   const Logout = () => {
+    audio.play();
     fetch("https://killcode.myrealms.in/quiz/logout", {
       method: "POST",
       headers: {

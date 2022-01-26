@@ -5,6 +5,8 @@ import "./login.scss";
 function Login() {
   const navigate = useNavigate();
 
+  let audio = new Audio("among.mp3");
+
   useEffect(() => {
     if(localStorage.getItem("tkn") && localStorage.getItem("tkn")!==undefined)
       navigate('/timer/')
@@ -18,6 +20,7 @@ function Login() {
   const [msg,setMsg] = useState("");
 
   const submitLog = async () => {
+    audio.play();
     console.log(form);
     fetch("https://killcode.myrealms.in/quiz/login", {
       method: "POST",

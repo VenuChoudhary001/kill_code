@@ -1,9 +1,13 @@
+@import "../../styles/global.scss";
+
 .background {
   height: 100%;
   width: 100%;
   background-image: url("../../../public/Images/bg.jpg");
   background-size: cover;
   background-position: center;
+
+  
 
   @media only screen and (max-width:700px) {
     background-position: -150px 0px;
@@ -19,7 +23,8 @@
     width: 100vw;
     height: 100vh;
     // backdrop-filter: blur(4px);
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: rgba(0, 0, 0, 0.342);
+
   }
 }
 
@@ -41,7 +46,7 @@
 }
 
 .background::before {
-  left: -3px;
+  left: -1px;
   background-position: center;
 
   @media only screen and (max-width:700px) {
@@ -52,7 +57,7 @@
   // filter: grayscale(100%) sepia(100%) saturate(350%) hue-rotate(240deg) brightness(121%) contrast(121%);
 }
 .background::after {
-  left: 3px;
+  left: 1px;
   background-position: center;
 
   @media only screen and (max-width:700px) {
