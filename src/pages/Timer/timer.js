@@ -15,13 +15,13 @@ function Timer() {
       navigate("/");
   }, [navigate]);
 
-  const [clock, setClock] = useState("0000");
+  const [clock, setClock] = useState("00000000");
   useEffect(() => {
     let myInterval = setInterval(() => {
       const getCountdown = async () => {
         var current_date = new Date().getTime();
         let tf = new Date(
-          "Tue Feb 01 2022 18:00:00 GMT+0530 (India Standard Time)"
+          "Tue Feb 01 2022 18:30:00 GMT+0530 (India Standard Time)"
         );
         var target_date = tf.getTime();
         var days, hours, minutes, seconds;
@@ -44,7 +44,7 @@ function Timer() {
       };
 
       function pad(n) {
-        return (n < 10 ? "0" : "") + n;
+        return n;
       }
 
       getCountdown();
@@ -87,20 +87,24 @@ function Timer() {
           <div className="killing">THE KILLINGS BEGIN ON 1ST FEBRUARY</div>
         </div>
 
-        <div className="timerWrap">
-          <div className="labelsTime">
-            <span>{clock[0]}</span>
-            <span>{clock[1]}</span>
-            <span>{clock[2]}</span>
-            <span>{clock[3]}</span>
-          </div>
-          <div className="labels">
-            <span>Days</span>
-            <span>Hours</span>
-            <span>Mins</span>
-            <span>Secs</span>
-          </div>
+        <main className="timerr">
+        <div className="time">
+          <span className="data">{clock[0] < 10 ? `0${clock[0]}` : clock[0]}</span>
+          <span className="label">DAYS</span>
         </div>
+        <div className="time">
+          <span className="data">{clock[1] < 10 ? `0${clock[1]}` : clock[1]}</span>
+          <span className="label">HOURS</span>
+        </div>{" "}
+        <div className="time">
+          <span className="data">{clock[2] < 10 ? `0${clock[2]}` : clock[2]}</span>
+          <span className="label">MINUTES</span>
+        </div>{" "}
+        <div className="time">
+          <span className="data">{clock[3] < 10 ? `0${clock[3]}` : clock[3]}</span>
+          <span className="label">SECONDS</span>
+        </div>
+      </main>
         <div className="registerButton" onClick={Logout}>
           Logout
         </div>
