@@ -86,9 +86,10 @@ function Registration() {
             setMsg(resp.participant3_email[0])
           else if(resp.participant4_email) 
             setMsg(resp.participant4_email[0])
+          else if(resp.user.username)
+            setMsg("Teamname cannot contain space.")
           else
             setMsg(resp);
-          
         } else {
           const data = await response.json();
           console.log("Success:", data);
