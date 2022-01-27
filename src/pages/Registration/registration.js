@@ -15,12 +15,13 @@ function Registration() {
       navigate("/timer/");
   }, [navigate]);
 
-  const [msg,setMsg] = useState("");
+  const [msg, setMsg] = useState("");
 
   const [user, setUser] = useState({
-    username: "",
     password: "",
+    teamname: "",
   });
+
   const [form, setForm] = useState({
     participant1: "",
     participant1_email: "",
@@ -45,9 +46,9 @@ function Registration() {
     console.log(form);
     const dat = {
       user: {
-        username: user.username,
         password: user.password,
       },
+      team_name: user.teamname,
       participant1: form.participant1,
       participant1_email: form.participant1_email,
       participant1_dc: form.participant1_dc,
@@ -78,18 +79,12 @@ function Registration() {
           console.log(response);
           const resp = await response.json();
           console.log(resp);
-          if(resp.participant1_email) 
-            setMsg(resp.participant1_email[0])
-          else if(resp.participant2_email) 
-            setMsg(resp.participant2_email[0])
-          else if(resp.participant3_email) 
-            setMsg(resp.participant3_email[0])
-          else if(resp.participant4_email) 
-            setMsg(resp.participant4_email[0])
-          else if(resp.user.username)
-            setMsg("Teamname cannot contain space.")
-          else
-            setMsg(resp);
+          if (resp.participant1_email) setMsg(resp.participant1_email[0]);
+          else if (resp.participant2_email) setMsg(resp.participant2_email[0]);
+          else if (resp.participant3_email) setMsg(resp.participant3_email[0]);
+          else if (resp.participant4_email) setMsg(resp.participant4_email[0]);
+          else if (resp.user.username) setMsg("Teamname cannot contain space.");
+          else setMsg(resp);
         } else {
           const data = await response.json();
           console.log("Success:", data);
@@ -120,10 +115,10 @@ function Registration() {
           <div className="inputGroup">
             <input
               type="text"
-              name="name"
+              name="teamname"
               placeholder="Team Name"
-              onChange={(e) => {
-                setUser({ ...user, username: e.target.value });
+              onChange={(ev) => {
+                setUser({ ...user, teamname: ev.target.value });
               }}
             />
             <input

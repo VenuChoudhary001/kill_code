@@ -22,12 +22,19 @@ function Login() {
   const submitLog = async () => {
     audio.play();
     console.log(form);
+    const dat = {
+      team : {
+        team_name: form.username,
+      },
+      password: form.password,
+    }
+    console.log(dat);
     fetch("https://killcode.myrealms.in/quiz/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(form),
+      body: JSON.stringify(dat),
     })
       .then(async (response) => 
       {
