@@ -1,14 +1,18 @@
-import Layout from "./Components/Layout/layout";
+import { PROVIDER } from './Context/store';
+import Layout from './Layout/index';
 import RouterSetup from "./Route";
 
 import "./styles/global.scss";
 function App() {
   return (
-    <div className="App">
+    <>
+    <PROVIDER>
+
       <Layout>
         <RouterSetup />
       </Layout>
-    </div>
+    </PROVIDER>
+    </>
   );
 }
 

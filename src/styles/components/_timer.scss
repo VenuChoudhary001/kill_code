@@ -1,0 +1,51 @@
+ .timerr {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: white;
+
+    letter-spacing: 1px;
+
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+
+    .time {
+      margin: 0px 1rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      font-family: "Audiowide", cursive !important;
+
+      padding: 15px;
+      @media screen and (max-width: 900px) {
+        padding: 9px;
+        margin: 0.1rem;
+      }
+      .label {
+        font-size: 1rem;
+        font-weight: 300;
+        @media screen and (max-width: 900px) {
+          font-size: 0.8rem;
+        }
+        @media screen and (max-width: 600px) {
+          font-size: 0.7rem;
+          flex-direction: column;
+        }
+      }
+
+      .data {
+        font-weight: bold;
+        font-size: 4rem;
+        @media screen and (max-width: 900px) {
+          font-size: 3rem;
+        }
+        @media screen and (max-width: 600px) {
+          font-size: 1.2rem;
+          flex-direction: column;
+        }
+      }
+    }
+  }

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
+import HEADER from "../../Layout/header";
 import "./login.scss";
 
 function Login() {
@@ -62,10 +63,7 @@ function Login() {
 
   return (
     <div className="log-page">
-      <div className="text">
-          <div className="killcode">KILLCODE-II</div>
-          <div className="killing">THE KILLINGS BEGIN ON 1ST FEBRUARY</div>
-        </div>
+      <HEADER/>
       <div className="card">
         <div className="cardHead">LOG IN</div>
         <div className="msg">{msg}</div>

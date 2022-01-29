@@ -1,0 +1,12 @@
+.countdown{
+    @include flexCenter;
+    .time{
+        color: $white;
+        font-size: 2.5rem;
+        font-weight: 600;
+         margin-right: 10px;
+         @media screen and (max-width:600px) {
+             font-size: 1.7rem;
+         }
+    }
+}

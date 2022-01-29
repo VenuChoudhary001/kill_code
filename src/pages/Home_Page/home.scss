@@ -10,53 +10,7 @@
   align-items: center;
   position: relative;
 
-  .text {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-end;
-    height: clamp(60px, 14.3vw, 200px);
-    width: 100%;
-
-    .killcode {
-      font-family: "Metal Mania", cursive;
-      color: #850813;
-      font-size: clamp(60px, 14.3vw, 200px);
-      letter-spacing: 15px;
-      @media only screen and (max-width:700px) {
-        letter-spacing: 0px;
-      }
-      position: absolute;
-      z-index: -4;
-
-      animation-name: hglow;
-      animation-duration: 1.5s;
-      animation-iteration-count: infinite;
-      animation-direction: alternate;
-    }
-
-    @keyframes hglow {
-      from {
-        text-shadow: 0px 0px 5px #8508128a, 0px 0px 5px #850813;
-      }
-      to {
-        text-shadow: 0px 0px 20px #85081277, 0px 0px 20px #850813;
-      }
-    }
-
-    .killing {
-      min-width: 100vw;
-      color: $white;
-      font-size: clamp(15px, 4.8vw, 50px);
-      text-align: center;
-      font-family: "Genos", sans-serif;
-      font-weight: 600;
-      position: absolute;
-      margin-bottom: clamp(30px, 7.9vw, 110px);
-      line-height: 1;
-    }
-  }
+ 
   .buttonWrapper {
     display: flex;
     justify-content: center;

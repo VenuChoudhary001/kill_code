@@ -2,6 +2,7 @@ import "./home.scss";
 import { useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
 import { Link } from "react-router-dom";
+import HEADER from "../../Layout/header";
 
 function Home() {
   const navigate = useNavigate();
@@ -18,10 +19,7 @@ function Home() {
   return (
     <>
       <div className="homePage">
-        <div className="text">
-          <div className="killcode">KILLCODE-II</div>
-          <div className="killing">THE KILLINGS BEGIN ON 1ST FEBRUARY</div>
-        </div>
+        <HEADER/>
         <div className="buttonWrapper">
           <Link to="/registration">
             <div className="registerButton" onClick={start}>REGISTER</div>

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import HEADER from "../../Layout/header";
 import "./registration.scss";
 
 function Registration() {
@@ -104,10 +105,7 @@ function Registration() {
 
   return (
     <div className="reg-page">
-      <div className="text">
-        <div className="killcode">KILLCODE-II</div>
-        <div className="killing">THE KILLINGS BEGIN ON 1ST FEBRUARY</div>
-      </div>
+     <HEADER/>
       <div className="card">
         <div className="cardHead">REGISTRATION</div>
         <div className="msg">{msg}</div>

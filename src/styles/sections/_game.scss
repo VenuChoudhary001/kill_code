@@ -1,0 +1,20 @@
+.game{
+    background-color: $dark-black;
+    padding: 20px;
+    border: 3px solid $red;
+    border-radius: 8px;
+    .riddle{
+        color: $white;
+        text-align: center;
+    font-style: italic;
+    font-size: 1.25rem;
+    }
+    .ans{
+        margin: 25px 0;
+        @include flexCenter;
+        @media screen and (max-width:900px) {
+            flex-direction: column;
+          
+        }
+    }
+}

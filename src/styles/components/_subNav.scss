@@ -1,0 +1,24 @@
+.sub-nav{
+    @include flexCenter;
+    @media screen and (max-width:600px) {
+        flex-direction: column;
+    }
+    .round-number{
+        color: red;
+        font-weight: 600;
+        font-size: 2.5rem;
+          @media screen and (max-width:600px) {
+            font-size: 1.7rem;
+        }
+    }
+    .line{
+        width: 1.2px;
+        height: 2.5rem;
+        background-color: $white;
+        margin: 5px 10px;
+        opacity: 0.25;
+        @media screen and (max-width:600px) {
+            display: none;
+        }
+    }
+}

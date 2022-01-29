@@ -1,0 +1,39 @@
+.text-box{
+    background-color: $dark-black;
+    @include flexCenter;
+    align-content: flex-start;
+    justify-content: flex-start;
+    padding: 10px 10px;
+    border: 2px solid $white;
+    border-radius: 28px;
+    margin: 10px 12px;
+    width: 30%;
+    @media screen and (max-width:900px) {
+        width: 80%;
+    }
+    input{
+        outline: none;
+        border: none;
+        padding: 2px 6px;
+        border-radius: 22px;
+        color: $gray;
+        background-color: transparent;
+        font-size: 1.1rem;
+        width: 100%;
+
+    }
+    .icon{
+        @include flexCenter;
+        svg{
+            width: 25px;
+              filter: brightness(0) invert(1);
+            height: 25px;
+        }
+        margin-right: 10px;
+        img{
+             width: 25px;
+              filter: brightness(0) invert(1);
+            height: 25px;
+        }
+    }
+}

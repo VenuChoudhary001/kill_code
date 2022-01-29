@@ -1,0 +1,12 @@
+.leaderboard{
+    .rank-list{
+       @include flexCenter;
+        color: $white;
+        .rank{
+            @include flexCenter;
+            padding: 10px;
+            background-color: $red;
+            margin-right: 10px;
+        }
+    }
+}

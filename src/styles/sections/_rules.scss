@@ -1,0 +1,23 @@
+.rules{
+    background-color: $dark-black;
+    backdrop-filter: blur(22px);
+    color: $white;
+    padding: 20px;
+    border: 2px solid $red;
+    border-radius: 8px;
+    max-height: 450px;
+    overflow-y: auto;
+    .heading{
+        color: $red;
+        font-weight: 600;
+        font-size: 2.5rem;
+        letter-spacing: 5px;
+        text-align: center;
+    }
+    .rules-list{
+        @include flexCenter;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+}

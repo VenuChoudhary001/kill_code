@@ -1,4 +1,32 @@
-@import "../../styles/global.scss";
+html {
+    box-sizing: border-box;
+  }
+*, body {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    // &::-webkit-scrollbar{
+    //   display: none;
+    // }
+   &::-webkit-scrollbar {
+        width: 7px;
+        border-radius: 3px;
+      }
+
+      /* Track */
+      &::-webkit-scrollbar-track {
+        background: #666;
+        border-radius: 3px;
+      }
+
+      /* Handle */
+      &::-webkit-scrollbar-thumb {
+        background: #ffffff;
+        border-radius: 3px;
+      }
+}
+
+
 
 .background {
   height: 100%;
@@ -6,7 +34,7 @@
   background-image: url("../../../public/Images/bg.jpg");
   background-size: cover;
   background-position: center;
-
+ 
   
 
   @media only screen and (max-width:700px) {
@@ -23,7 +51,7 @@
     width: 100vw;
     height: 100vh;
     // backdrop-filter: blur(4px);
-    background-color: rgba(0, 0, 0, 0.342);
+    background-color: rgba(0, 0, 0, 0.142);
 
   }
 }
@@ -80,33 +108,7 @@ $steps: 15;
 
 .content {
   height: 82%;
-}
-
-footer {
-  height: 18%;
-  width: 100%;
-  text-align: center;
-
-  .logos {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-left: -5px;
-
-    .footIcon {
-      height: 40px;
-      width: auto;
-      margin: 10px;
-    }
-    .footIconSmall {
-      height: 25px;
-      width: auto;
-      margin: 10px;
-    }
-  }
-
-  .footText {
-    font-size: 17px;
-    color: white;
-  }
+//  max-height: 60vh;
+    // overflow-y: auto;
+    // overflow-x: hidden;
 }
