@@ -65,13 +65,13 @@ const LOCATIONS = () => {
     },
   ];
   
- 
+  
   return (
     <>
-      <Navbar />
+      <Navbar  />
       <section className="map-container">
        
-<MapContainer center={[51.505, -0.09]} style={{height:500,zIndex:-1}} zoom={3} scrollWheelZoom={true}>
+<MapContainer center={[51.505, -0.09]} style={{height:500,zIndex:1}} zoom={3} scrollWheelZoom={true}>
   <TileLayer
     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
