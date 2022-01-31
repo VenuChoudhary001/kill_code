@@ -10,7 +10,7 @@
 }
 
 .modal-container{
-    @media screen and (max-width:600px) {
+    @media screen and (max-width:700px) {
         display: none;
     }
      position: fixed;
@@ -110,7 +110,7 @@
 }
 
 .modal-mob{
-    @media screen and (min-width:900px) {
+    @media screen and (min-width:700px) {
         display: none;
     }
     display: grid;

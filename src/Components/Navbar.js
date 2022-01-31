@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
 import HEADER from "../Layout/header";
-import { useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import STORE from "../Context/store";
 const Navbar = () => {
   const [show, setShow] = useState(false);
-const {active,setActive}=useContext(STORE);
+  const { active, setActive } = useContext(STORE);
   const navigate = useNavigate();
   let navItem = [
     "game",
@@ -13,6 +13,7 @@ const {active,setActive}=useContext(STORE);
     "locations",
     "rules",
     "leaderboard",
+    "kill code"
   ];
   const handleClick = async (e) => {
     switch (e.target.ariaLabel) {
@@ -43,14 +44,50 @@ const {active,setActive}=useContext(STORE);
         break;
       case "leaderboard":
         setActive(5);
-        navigate('/leaderboard',{replace:true});
+        navigate("/leaderboard", { replace: true });
+        break;
+      case "kill code":
+         setActive(6);
+         navigate("/killcode",{replace:true});
         break;
       default:
         console.log("INVALID");
         break;
     }
   };
+  useEffect(() => {
+    switch (window.location.pathname) {
+      case "/game":
+        setActive(0);
+        break;
+      case "/evidence":
+        setActive(1);
 
+        break;
+      case "/profiles":
+        setActive(2);
+        break;
+
+      case "/locations":
+        setActive(3);
+
+        break;
+      case "/rules":
+        setActive(4);
+
+        break;
+      case "/leaderboard":
+        setActive(5);
+
+        break;
+        case "/killcode":
+         setActive(6);
+        break;
+      default:
+        console.log("INVALID");
+        break;
+    }
+  }, []);
   const navContent = (
     <div className="nav-menu">
       {navItem.map((item, index) => (
@@ -66,13 +103,12 @@ const {active,setActive}=useContext(STORE);
     </div>
   );
   /* eslint-disable */
-  useEffect(() => {}, []);
 
   return (
     <>
       <section className="nav">
         <div className="brand-name">
-          <HEADER/>
+          <HEADER />
         </div>
         {navContent}
       </section>

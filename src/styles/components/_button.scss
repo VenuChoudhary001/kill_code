@@ -18,4 +18,10 @@
         color: $white;
         border: 2px solid $red;
     }
+    &:disabled{
+        background-color: #5F0404;
+        color: $gray;
+        border: none;
+        pointer-events: none;
+    }
 }

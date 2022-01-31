@@ -1,0 +1,29 @@
+
+
+     .kill-code{
+        background-color: $dark-black;
+        padding: 5%;
+        color: $white;
+        border: 3px solid $red;
+        @include flexCenter;
+        flex-direction: column;
+        border-radius: 8px;
+        .kill-title{
+            font-size: 2rem;
+            color: $red;
+            font-family: "Audiowide", cursive !important;
+            margin-bottom: 15px;
+        }
+        .text-box{
+            // border-radius: 3px;
+            width: inherit;
+            input{
+                
+                &::placeholder{
+                    font-family: "Audiowide", cursive !important;
+                    font-weight: 600;
+                    font-size: 1rem;
+                }
+            }
+        }
+    }

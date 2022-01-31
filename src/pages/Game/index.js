@@ -1,24 +1,91 @@
-import React from 'react';
-import Navbar from '../../Components/Navbar';
-import SubNav from '../../Components/SubNav';
-import TextBox from '../../Components/TextBox';
-import Knife from '../../Assets/images/knife.png'
-import BUTTON from '../../Components/Button';
-
-
+import React, { useContext, useState } from "react";
+import Navbar from "../../Components/Navbar";
+import SubNav from "../../Components/SubNav";
+import TextBox from "../../Components/TextBox";
+import Knife from "../../Assets/images/knife.png";
+import BUTTON from "../../Components/Button";
+import STORE from "../../Context/store";
+import CountDown from "../../Components/CountDown";
+import { useEffect } from "react/cjs/react.development";
+import axios from "axios";
+import { BASE_URL } from "../../constants";
 
 const GAME = () => {
+  const { currRound,status, setStatus} = useContext(STORE);
+
+  const [location, setLocation] = useState("");
+  const [victim, setVictim] = useState("");
+ 
+
+  const getStatus = async () => {
+    try {
+      let headers = {
+        "Content-Type": "application/json",
+        Authorization: "Token " + localStorage.getItem("tkn"),
+      };
+      let res = await fetch(`${BASE_URL}quiz/storeAnswer`, {
+        method: "POST",
+        headers: { ...headers },
+        body:JSON.stringify( {
+          location: location,
+          victim: victim,
+        }),
+      });
+      let data=await res.json()
+      if(data.message=="Answer saved successfully."){
+;
+        setStatus(data);
+      }
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleSubmit = (e) => {
+    if (location !== "" && victim !== "") {
+      getStatus();
+    } else {
+      alert("PLEASE ENTER BOTH THE FIELDS");
+    }
+  };
+
+  if (currRound && currRound.message === "No rounds live") {
+    return (
+      <>
+        <Navbar />
+        {currRound.next_round_start_time ? (
+          <>
+            <div className="info-text">
+              Round Starts In
+              <br />
+            </div>
+            <CountDown end={currRound.next_round_start_time} />
+          </>
+        ) : (
+          <div className="info-text">GAME HAS ENDED</div>
+        )}
+      </>
+    );
+  }
+
   return (
     <>
       <Navbar />
       <SubNav />
       <section className="container">
         <main className="game">
+          {status && <div className="status-text">You have {status && status.tries_left} tries left</div>}
           <div className="riddle">
-            <div className="line1">Lorem ipsum dolor sit.</div>
-            <div className="line1">Lorem ipsum dolor sit.</div>
-            <div className="line1">Lorem ipsum dolor sit.</div>
-            <div className="line1">Lorem ipsum dolor sit.</div>
+            {currRound && (
+              <>
+                {" "}
+                <div className="line1">{currRound.riddle}</div>
+                <div className="line1">{currRound.riddle}</div>
+                <div className="line1">{currRound.riddle}</div>
+                <div className="line1">{currRound.riddle}</div>
+              </>
+            )}
           </div>
           <div className="ans">
             <TextBox
@@ -37,10 +104,15 @@ const GAME = () => {
                 </svg>
               }
               placeholder={"Murder Location"}
+              action={(e) => setLocation(e.target.value)}
             />
-            <TextBox icon={<img src={Knife}/>} placeholder={"Victim"}/>
+            <TextBox
+              icon={<img src={Knife} />}
+              action={(e) => setVictim(e.target.value)}
+              placeholder={"Victim"}
+            />
           </div>
-          <BUTTON lable={"SUBMIT"}/>
+          <BUTTON disable={status && status.tries_left==0? true : false} lable={"SUBMIT"} action={handleSubmit} />
         </main>
       </section>
     </>

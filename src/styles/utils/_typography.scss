@@ -1,0 +1,15 @@
+.info-text{
+    color: $red;
+    text-align: center;
+    font-size: 3.5rem;
+    // height: 100%;
+    @include flexCenter;
+    font-weight: 600;
+}
+.status-text{
+    color: $light-red;
+    text-align: center;
+    font-size:0.8rem;
+    margin-bottom: 20px;
+    font-weight: bold;
+}

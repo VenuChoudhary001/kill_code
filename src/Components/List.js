@@ -1,67 +1,66 @@
-import React, { useContext, useEffect, useState } from "react";
-import STORE from "../Context/store";
+import React, { useState } from "react";
 import Skull from "../Assets/images/skull.png";
+import { BASE_URL } from "../constants";
 import Modal from "./Modal";
 
-const List = ({ id, title, type, avatar,rank }) => {
-  const { data } = useContext(STORE);
+const List = ({type,item}) => {
   const [content, setContent] = useState();
   const [show, setShow] = useState(false);
 
   const handleClick = () => {
     switch (type) {
       case "evidence":
-        let mask = evidenceContent(id);
+        let mask = evidenceContent(item);
         setContent(mask);
         setShow(!show);
         break;
       case "profile":
-        let profile_mask = profileContent(id);
+        let profile_mask = profileContent(item);
         setContent(profile_mask);
         setShow(!show);
         break;
       case "team":
-        let team_mask = leaderboardProfiles(id);
+        let team_mask = leaderboardProfiles(item);
         setContent(team_mask);
         setShow(!show);
         break;
     }
   };
-  const profileContent = (id) => {
-    let profile = data.profiles.find((item) => item.id == id);
+  const profileContent = (item) => {
+  
     return (
       <article className="profile">
         <div className="header">
-          <img src={profile.avatar_url} alt="" />
-          <div className="title">{profile.name}</div>
+          <img src={`${BASE_URL}media/${item.avatar_url}`} alt="" />
+          <div className="title">{item.title}</div>
         </div>
-        <div className="info">{profile.bio}</div>
+        <div className="info">{item.data}</div>
       </article>
     );
   };
 
-  const evidenceContent = (id) => {
-    let evi = data.evidence.find((item) => item.id == id);
+  const evidenceContent = (item) => {
+  
     return (
       <article className="evidence">
         <div className="heading">NOTES FROM THE KILLER</div>
-        <div className="info">{evi.note}</div>
+        <div className="info">{item.killer_msg}</div>
         <div className="heading">RIDDLE</div>
-        <div className="info">{evi.riddle}</div>
+        <div className="info">{item.riddle}</div>
       </article>
     );
   };
 
-  const leaderboardProfiles = (id) => {
-    let team = data.leaderboard.find((item) => item.id == id);
+  const leaderboardProfiles = (item) => {
     return (
       <article className="leader">
         <div className="team-logo">
           <img src={Skull} alt="" />
         </div>
-        <div className="heading">{team.team}</div>
+        <div>{item.score}</div>
+        <div className="heading">{item.name}</div>
         <ul>
-          {team.players.map((item, index) => (
+          {item.participant_array.map((item, index) => (
             <li className="player" key={index}>
               {item}
             </li>
@@ -75,9 +74,9 @@ const List = ({ id, title, type, avatar,rank }) => {
     <>
       <main className="list" onClick={handleClick}>
         <div className="title">
-          {type=="team" && <div className="rank">{rank}</div> }
-          {avatar && <img src={avatar} alt="" />}
-          {title}
+          {type=="team" && <div className="rank">{item.rank}</div> }
+          {item.avatar_url && <img src={`${BASE_URL}media/${item.avatar_url}`} alt="" />}
+          {item.title || (item.round_no &&`ROUND ${item.round_no}`) || item.name}
         </div>
         <div className="icon">
           <svg

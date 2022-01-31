@@ -1,12 +1,14 @@
 //  import "./timer.scss";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect} from "react";
 import { useNavigate } from "react-router-dom";
 import HEADER from "../../Layout/header";
 import Timer from "../../Components/Timer";
+import STORE from "../../Context/store";
+import { BASE_URL } from "../../constants";
 
 function TIMER() {
   const navigate = useNavigate();
-
+  const {setUser}=useContext(STORE);
   let audio = new Audio("among.mp3");
 
   useEffect(() => {
@@ -18,7 +20,7 @@ function TIMER() {
   }, [navigate]);
   const Logout = () => {
     audio.play();
-    fetch("https://killcode.myrealms.in/quiz/logout", {
+    fetch(`${BASE_URL}quiz/logout`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -29,10 +31,12 @@ function TIMER() {
       .then((response) => {
         if (response.status !== 204) {
           localStorage.removeItem("tkn");
+          setUser({});
           navigate("/");
           console.log(response);
         } else {
           localStorage.removeItem("tkn");
+          setUser({});
           navigate("/");
         }
       })

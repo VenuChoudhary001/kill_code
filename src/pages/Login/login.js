@@ -1,17 +1,22 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useNavigate } from 'react-router-dom';
 import HEADER from "../../Layout/header";
 import "./login.scss";
+import { BASE_URL } from "../../constants";
+import STORE from "../../Context/store";
 
 function Login() {
   const navigate = useNavigate();
-
+  const {user,setUser}=useContext(STORE);
   let audio = new Audio("among.mp3");
 
   useEffect(() => {
     if(localStorage.getItem("tkn") && localStorage.getItem("tkn")!==undefined)
-      navigate('/timer/')
-  }, [navigate])
+      {
+        setUser({...user,token:localStorage.getItem('tkn')});
+        navigate('/timer/')
+      }
+  }, []);
 
   const [form, setForm] = useState({
     username:"",
@@ -30,7 +35,7 @@ function Login() {
       password: form.password,
     }
     console.log(dat);
-    fetch("https://killcode.myrealms.in/quiz/login", {
+    fetch(`${BASE_URL}quiz/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -50,6 +55,7 @@ function Login() {
 
         if (data.token && data.token !== undefined) {
           localStorage.setItem("tkn", data.token);
+          setUser({...user,token:data.token});
           navigate("/timer/");
         } else {
           console.log("error");
@@ -61,6 +67,30 @@ function Login() {
       });
   }
 
+
+
+/*
+
+  const handleChange=(e,type)=>{
+  
+     if(e.keyCode!=13){
+       switch(type){
+         case "username":
+           setForm({...form,username:e.target.value});
+          break;
+         case "password":
+           setForm({...form,password:e.target.value});
+          break;
+         default:
+           console.log("invalid");
+          break;
+       }
+     }else{
+      //  submitLog();
+      console.log(e,type);
+     }
+  }
+*/
   return (
     <div className="log-page">
       <HEADER/>
@@ -69,12 +99,14 @@ function Login() {
         <div className="msg">{msg}</div>
         <form>
           <div className="inputGroup">
-            <input type="text" name="name" placeholder="Team Name" onChange={(e) => {
+            <input type="text"  placeholder="Team Name" onChange={(e) => 
               setForm({...form, username:e.target.value})
-            }}/>
-            <input type="password" name="password" placeholder="Password" onChange={(e) => {
-              setForm({...form, password:e.target.value})
-            }}/>
+              // handleChange(e,"username")
+            }/>
+            <input type="password" placeholder="Password" onChange={(e) =>
+               setForm({...form, password:e.target.value})
+              // handleChange(e,"password")
+            }/>
           </div>
           
           <div className="registerButton" onClick={submitLog}>Submit</div>

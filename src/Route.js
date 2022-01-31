@@ -9,6 +9,7 @@ import RULES from "./pages/Rules";
 import GAME from "./pages/Game";
 import LOCATIONS from "./pages/Locations";
 import LEADERBOARD from "./pages/Leaderboard";
+import KILL_CODE from "./pages/KillCode";
 
 const ReactRouterSetup = () => {
     return (
@@ -24,6 +25,7 @@ const ReactRouterSetup = () => {
           <Route exact path="/game" element={<GAME />} />
           <Route exact path="/locations" element={<LOCATIONS />} />
           <Route exact path="/leaderboard" element={<LEADERBOARD/>} />
+          <Route exact path="/killcode" element={<KILL_CODE/>} />
         </Routes>
       </Router>
     );
