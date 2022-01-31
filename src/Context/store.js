@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { BASE_URL } from "../constants";
 
 const STORE = React.createContext();
@@ -7,7 +8,7 @@ const STORE = React.createContext();
 
 export const PROVIDER = ({ children }) => {
 
-
+  const navigate=useNavigate();
 
 
   const [status, setStatus] = useState();
@@ -43,6 +44,11 @@ export const PROVIDER = ({ children }) => {
       getData();
       setApiCall(false);
     } 
+    if (
+      !localStorage.getItem("tkn") ||
+      localStorage.getItem("tkn") === undefined
+    )
+      navigate("/");
   }, [apiCall]);
 
 

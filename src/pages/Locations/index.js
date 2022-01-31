@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 // import Navbar from "../../Components/Navbar";
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
+import { useNavigate } from "react-router-dom";
 
 const LOCATIONS = () => {
-  
+  const navigate=useNavigate();
   const data = [
     {
       name: "Wakanda",
@@ -64,8 +65,14 @@ const LOCATIONS = () => {
       Longitude: -79.12818,
     },
   ];
-  
-  
+  /* eslint-disable */
+  useEffect(()=>{
+    if (
+      !localStorage.getItem("tkn") ||
+      localStorage.getItem("tkn") === undefined
+    )
+      navigate("/");
+  },[])
   return (
     <>
       {/* <Navbar  /> */}
@@ -76,6 +83,7 @@ const LOCATIONS = () => {
     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
   />
+  
   {data.map(item=><Marker position={[item.Latitude, item.Longitude]}>
     <Popup>
       {item.name}

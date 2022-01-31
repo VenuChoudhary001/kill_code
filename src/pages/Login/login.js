@@ -69,30 +69,9 @@ function Login() {
 
 
 
-/*
 
-  const handleChange=(e,type)=>{
-  
-     if(e.keyCode!=13){
-       switch(type){
-         case "username":
-           setForm({...form,username:e.target.value});
-          break;
-         case "password":
-           setForm({...form,password:e.target.value});
-          break;
-         default:
-           console.log("invalid");
-          break;
-       }
-     }else{
-      //  submitLog();
-      console.log(e,type);
-     }
-  }
-*/
   return (
-    <div className="log-page">
+    <div className="log-page container">
       <HEADER/>
       <div className="card">
         <div className="cardHead">LOG IN</div>

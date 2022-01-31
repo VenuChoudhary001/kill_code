@@ -1,5 +1,6 @@
 
 import React, { useContext ,useState,useEffect} from "react";
+import { useNavigate } from "react-router-dom";
 import List from "../../Components/List";
 // import Navbar from "../../Components/Navbar";
 import SubNav from "../../Components/SubNav";
@@ -10,8 +11,8 @@ const EVIDENCE_ROOM = () => {
 
 
 const [evidence,setEvidence]=useState();
-// api call for all evidence uptill last round  -  quiz/evidence
 
+const navigate=useNavigate();
 const getData=async ()=>{
   try {
     let headers = {
@@ -24,31 +25,27 @@ const getData=async ()=>{
     setEvidence(result);
   } catch (error) {
     console.log(error);
+    if(error.status===401){
+      localStorage.removeItem("tkn");
+      navigate('/',{replace:true});
+    }
   }
   
 }
-
+/* eslint-disable */
 useEffect(()=>{
+  
    getData();
+   if (
+    !localStorage.getItem("tkn") ||
+    localStorage.getItem("tkn") === undefined
+  )
+    navigate("/");
 },[])
 
-// if(new Date.getTime()>currRound.end_time){
-//   setUpdateEvidence(true);
-// }
-/*
-useEffect(()=>{
-  if(updateEvidence){
-    fetch();      // quiz/evidence
-    setEvidence();
-    setUpdateEvidence(false);
-  }
-},[updateEvidence])
-
-*/
 
   return (
     <>
-      {/* <Navbar /> */}
       <SubNav />
       <section className="container">
         {evidence &&

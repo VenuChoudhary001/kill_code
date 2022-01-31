@@ -3,12 +3,16 @@
 @import 'game';
 @import 'leaderboard';
 @import 'killCode';
+*{
+    // 
+}
 .container{
     z-index: 20;
     margin: 2% auto;
     min-height: 60vh;
     // min-height: 500px;
     overflow-y: auto;
+    
     @media screen and (min-width:601px) {
         position: relative;
         

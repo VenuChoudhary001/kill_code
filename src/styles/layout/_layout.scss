@@ -8,8 +8,9 @@ html {
     // &::-webkit-scrollbar{
     //   display: none;
     // }
+ 
    &::-webkit-scrollbar {
-        width: 7px;
+        width: 2px;
         border-radius: 3px;
       }
 
@@ -21,12 +22,14 @@ html {
 
       /* Handle */
       &::-webkit-scrollbar-thumb {
-        background: #ffffff;
+        background: #0505053d;
         border-radius: 3px;
       }
 }
 
-
+body{
+  overflow-x: hidden;
+}
 
 .background {
   height: 100%;

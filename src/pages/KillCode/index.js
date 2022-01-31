@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import BUTTON from '../../Components/Button';
 // import Navbar from '../../Components/Navbar';
 import TextBox from '../../Components/TextBox';
 import { BASE_URL } from '../../constants';
 const KILL_CODE = () => {
 
-
+const navigate=useNavigate();
   const [code,setCode]=useState();
 //   const [show,setShow]=useState(false);
   const getData=async ()=>{
@@ -39,8 +40,14 @@ const KILL_CODE = () => {
   }
 
 
-
-
+/* eslint-disable */
+useEffect(()=>{
+  if (
+    !localStorage.getItem("tkn") ||
+    localStorage.getItem("tkn") === undefined
+  )
+    navigate("/");
+},[])
 
   return <>
   {/* <Navbar/> */}

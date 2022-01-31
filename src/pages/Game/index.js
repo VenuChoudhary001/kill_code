@@ -7,6 +7,7 @@ import BUTTON from "../../Components/Button";
 import STORE from "../../Context/store";
 import CountDown from "../../Components/CountDown";
 import { BASE_URL } from "../../constants";
+import { useNavigate } from "react-router-dom";
 
 
 const GAME = () => {
@@ -48,6 +49,8 @@ const GAME = () => {
     }
   };
 
+  const navigate=useNavigate();
+
   const update= async () => {
     try {
       let headers = {
@@ -62,14 +65,21 @@ const GAME = () => {
       let result=await res.json();
       setCurrRound(result);
     } catch (error) {
-      console.log(error);
-      setCurrRound(error)
+      console.log(error); 
+      if(error.status==401){
+        localStorage.removeItem("tkn");
+        navigate('/',{replace:true});
+      }
     }
   };
   /*eslint-disable */
   useEffect(()=>{
     update();
-    console.log("HELLo");
+    if (
+      !localStorage.getItem("tkn") ||
+      localStorage.getItem("tkn") === undefined
+    )
+      navigate("/");
   },[])
   if (currRound && currRound.message === "No rounds live") {
     return (

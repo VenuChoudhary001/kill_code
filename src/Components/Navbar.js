@@ -110,21 +110,25 @@ const Navbar = () => {
     switch (e.target.ariaLabel) {
       case "game":
         setActive(0);
+        setShow(!show);
         navigate("/game", { replace: true });
         break;
       case "evidence":
         setActive(1);
+        setShow(!show);
 
         navigate("/evidence", { replace: true });
         break;
       case "profiles":
         setActive(2);
+        setShow(!show);
 
         navigate("/profiles", { replace: true });
         break;
 
       case "locations":
         setActive(3);
+        setShow(!show);
 
         navigate("/locations", { replace: true });
         break;
@@ -137,6 +141,7 @@ const Navbar = () => {
         navigate("/leaderboard", { replace: true });
         break;
       case "kill code":
+        setShow(!show);
         setActive(5);
         navigate("/killcode", { replace: true });
         break;
