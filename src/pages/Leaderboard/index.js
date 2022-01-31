@@ -1,10 +1,10 @@
-import React, { useContext,useState,useEffect } from "react";
+import React, {useState,useEffect } from "react";
 import axios from "axios";
 import { BASE_URL } from "../../constants";
 import List from "../../Components/List";
 import Navbar from "../../Components/Navbar";
 import SubNav from "../../Components/SubNav";
-import STORE from "../../Context/store";
+
 
 const LEADERBOARD = () => {
   // const { data } = useContext(STORE);

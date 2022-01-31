@@ -7,7 +7,7 @@ const KILL_CODE = () => {
 
 
   const [code,setCode]=useState();
-
+//   const [show,setShow]=useState(false);
   const getData=async ()=>{
     try {
         let headers = {

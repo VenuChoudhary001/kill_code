@@ -18,3 +18,14 @@
         }
     }
 }
+
+
+.fore-word{
+    background-color: $dark-black;
+    color: $white;
+    padding:20px;
+    @include flexCenter;
+    width: 100%;
+    border: 3px solid $red;
+    border-radius: 8px;
+}

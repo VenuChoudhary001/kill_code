@@ -1,8 +1,8 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, {  useContext } from "react";
 import CountDown from "./CountDown";
 import STORE from "../Context/store";
 const SubNav = ({ round }) => {
-  const { currRound, roundLimit, roundGap } = useContext(STORE);
+  const { currRound} = useContext(STORE);
 
   
   if(currRound && currRound.message)

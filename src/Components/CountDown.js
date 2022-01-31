@@ -34,7 +34,7 @@ const CountDown = ({end}) => {
     setDay(dayCount)
     
   };
-  
+  /* eslint-disable */
   useEffect(() => {
 
       let myInterval=setInterval(() => {

@@ -24,6 +24,9 @@ const List = ({type,item}) => {
         setContent(team_mask);
         setShow(!show);
         break;
+      default:
+        console.log("INVALID");
+      break;
     }
   };
   const profileContent = (item) => {
@@ -74,7 +77,7 @@ const List = ({type,item}) => {
     <>
       <main className="list" onClick={handleClick}>
         <div className="title">
-          {type=="team" && <div className="rank">{item.rank}</div> }
+          {type==="team" && <div className="rank">{item.rank}</div> }
           {item.avatar_url && <img src={`${BASE_URL}media/${item.avatar_url}`} alt="" />}
           {item.title || (item.round_no &&`ROUND ${item.round_no}`) || item.name}
         </div>

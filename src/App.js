@@ -4,6 +4,7 @@ import RouterSetup from "./Route";
 
 import "./styles/global.scss";
 function App() {
+
   return (
     <>
     <PROVIDER>

@@ -74,6 +74,7 @@ const LOCATIONS = () => {
     },
   ];
   const [current, setCurrent] = useState();
+  /*eslint-disable */
   const markers = useMemo(() =>
     data.map((item, index) => (
       <Marker key={index} latitude={item.Latitude} longitude={item.Longitude}>

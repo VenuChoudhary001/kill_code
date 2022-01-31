@@ -23,4 +23,10 @@
             margin-bottom: 5px;
         }
     }
+   
+}
+.mob-rules{
+    @media screen and (min-width:900px) {
+        display: none;
+    }
 }

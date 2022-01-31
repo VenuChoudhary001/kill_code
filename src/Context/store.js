@@ -3,12 +3,10 @@ import { BASE_URL } from "../constants";
 import axios from "axios";
 const STORE = React.createContext();
 
-const initialState = {};
+
 
 export const PROVIDER = ({ children }) => {
-  const [data, setData] = useState({});
-  const [roundLimit, setRoundLimit] = useState();
-  const [roundGap,setRoundGap]=useState();
+
 
 
 
@@ -20,9 +18,7 @@ export const PROVIDER = ({ children }) => {
   const [user, setUser] = useState({});
 
   const [apiCall, setApiCall] = useState(true);
-  //  if(currRound && new Date() >= new Date(currRound.next_round_start_time)){
-  //    setApiCall(true);
-  //  }
+  
 
   const getData = async () => {
     try {
@@ -52,27 +48,13 @@ export const PROVIDER = ({ children }) => {
 
 
 
-  //Replace with the API
-  // useEffect(() => {
-  //   // audio.loop();
 
-  //   // call quiz/round api for details of curr round
-
-  // }, []);
-
-  /*
-  
-  if(currRound)
-  
-  */
 
   return (
     <STORE.Provider
       value={{
         active,
         setActive,
-        roundLimit,
-        roundGap,
         currRound,
         setCurrRound,
         user,

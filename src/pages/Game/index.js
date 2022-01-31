@@ -6,8 +6,6 @@ import Knife from "../../Assets/images/knife.png";
 import BUTTON from "../../Components/Button";
 import STORE from "../../Context/store";
 import CountDown from "../../Components/CountDown";
-import { useEffect } from "react/cjs/react.development";
-import axios from "axios";
 import { BASE_URL } from "../../constants";
 
 const GAME = () => {
@@ -15,7 +13,7 @@ const GAME = () => {
 
   const [location, setLocation] = useState("");
   const [victim, setVictim] = useState("");
- 
+ /* eslint-disable */
 
   const getStatus = async () => {
     try {
@@ -32,7 +30,7 @@ const GAME = () => {
         }),
       });
       let data=await res.json()
-      if(data.message=="Answer saved successfully."){
+      if(data.message==="Answer saved successfully."){
 ;
         setStatus(data);
       }
@@ -57,13 +55,27 @@ const GAME = () => {
         {currRound.next_round_start_time ? (
           <>
             <div className="info-text">
-              Round Starts In
+              Round {currRound.next_round} Starts In
               <br />
             </div>
             <CountDown end={currRound.next_round_start_time} />
+            <div className="opinion"></div>
+           {currRound.next_round==1 && <div className="container">
+             <div className="fore-word">
+
+             The DS PD has been investigating the death of Anatoly Fernandez for a week now. But recent developments have shifted our focus. Today morning, a note arrived at the DS PD precinct, which we believe is from the killer. This is a substantial development. The note, its timing and tone make us believe this is not a scattered homicide, rather the first in a pattern in the work of a serial killer. 
+               <br/>
+Along with the note, we have received a map and a set of profiles. This falls in line with the tendency of most serial killers' need to have their genius acknowledged. The DS PD makes this information public to all of you in the hopes of stopping the murderer before he kills another. 
+               <br/>
+The map can be found under the Map tab on the website and the profiles can be found under the Character tab. The killer has also left us a poem at the crime scene, which has been stored under the Evidence tab with all other evidence that has been found at the crime scene. We believe these poems may prove to be some kind of a metaphorical message to us, that could help us stop him. 
+               <br/>
+Good luck to you all, and may we succeed in bringing down the killer.
+             </div>
+
+            </div>}
           </>
         ) : (
-          <div className="info-text">GAME HAS ENDED</div>
+          <div className="info-text">TIME TO SOLVE KILL CODE</div>
         )}
       </>
     );

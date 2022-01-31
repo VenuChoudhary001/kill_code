@@ -10,7 +10,7 @@
 }
 
 .modal-container{
-    @media screen and (max-width:700px) {
+    @media screen and (max-width:900px) {
         display: none;
     }
      position: fixed;
@@ -18,7 +18,7 @@
      left: 50%;
      transform: translate(-50%,-50%);
     //  transform: translateY(-50%);
-     max-width: 700;
+     max-width: 900px;
      margin: 1px auto;
      max-height: 500px;
      min-height: 300px;
@@ -106,11 +106,26 @@
                  text-align: center;color: $light-red;
              }
          }
+         .rules-heading{
+             font-size: 3rem;
+             color: $red;
+             font-weight: bold;
+             letter-spacing: 2px;
+             text-align: center;
+         }
+         .rules-list{
+            //  font-size: 18px;
+             .list-item{
+                 margin-bottom: 10px;
+                 font-size: 1rem;
+                 font-family: 'Poppins';
+             }
+         }
      }
 }
 
 .modal-mob{
-    @media screen and (min-width:700px) {
+    @media screen and (min-width:900px) {
         display: none;
     }
     display: grid;
@@ -127,6 +142,21 @@
     height: 100%;
     z-index: 100;
     overflow-y:auto ;
+    .rules-heading{
+        font-size: 2rem;
+        color: $red;
+        font-weight: bold;
+        letter-spacing: 2px;
+        text-align: center;
+    }
+    .rules-list{
+       //  font-size: 18px;
+        .list-item{
+            margin-bottom: 10px;
+            font-size: 14px;
+            font-family: 'Poppins';
+        }
+    }
     .profile{
         .header{
             @include flexCenter;
