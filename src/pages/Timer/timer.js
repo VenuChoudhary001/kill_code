@@ -10,7 +10,7 @@ function TIMER() {
   const navigate = useNavigate();
   const {setUser}=useContext(STORE);
   let audio = new Audio("among.mp3");
-
+  /* eslint-disable */
   useEffect(() => {
     if (
       !localStorage.getItem("tkn") ||

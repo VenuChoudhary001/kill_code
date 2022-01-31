@@ -1,14 +1,14 @@
 import axios from "axios";
-import React, { useContext } from "react";
+import React from "react";
 import { useEffect, useState } from "react/cjs/react.development";
 import List from "../../Components/List";
 import Navbar from "../../Components/Navbar";
 import SubNav from "../../Components/SubNav";
 import { BASE_URL } from "../../constants";
-import STORE from "../../Context/store";
+
 
 const PROFILES = () => {
-  const { data } = useContext(STORE);
+ 
    
   const [profiles,setProfiles]=useState();
 

@@ -9,7 +9,7 @@ function Login() {
   const navigate = useNavigate();
   const {user,setUser}=useContext(STORE);
   let audio = new Audio("among.mp3");
-
+  /* eslint-disable */
   useEffect(() => {
     if(localStorage.getItem("tkn") && localStorage.getItem("tkn")!==undefined)
       {

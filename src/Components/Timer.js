@@ -2,6 +2,7 @@ import React,{useEffect , useState} from 'react';
 
 const Timer = ({date}) => {
     const [clock, setClock] = useState("00000000");
+    /* eslint-disable */
     useEffect(() => {
       let myInterval = setInterval(() => {
         const getCountdown = async () => {
