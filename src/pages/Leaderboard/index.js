@@ -2,7 +2,7 @@ import React, {useState,useEffect } from "react";
 import axios from "axios";
 import { BASE_URL } from "../../constants";
 import List from "../../Components/List";
-import Navbar from "../../Components/Navbar";
+// import Navbar from "../../Components/Navbar";
 import SubNav from "../../Components/SubNav";
 
 
@@ -31,7 +31,7 @@ const LEADERBOARD = () => {
   },[])
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
       <SubNav />
       <section className="container">
           <main className="leaderboard">

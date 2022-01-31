@@ -60,7 +60,7 @@ const List = ({type,item}) => {
         <div className="team-logo">
           <img src={Skull} alt="" />
         </div>
-        <div>{item.score}</div>
+        <div>Score : {item.score}</div>
         <div className="heading">{item.name}</div>
         <ul>
           {item.participant_array.map((item, index) => (

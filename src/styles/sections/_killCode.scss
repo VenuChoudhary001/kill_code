@@ -8,22 +8,44 @@
         @include flexCenter;
         flex-direction: column;
         border-radius: 8px;
+        @media screen and (max-width:600px) {
+            border: 2px solid $red;
+            border-radius: 6px;
+        }
         .kill-title{
-            font-size: 2rem;
+            font-size: 3rem;
+            font-weight: bold;
             color: $red;
-            font-family: "Audiowide", cursive !important;
+            font-family: "Genos", sans-serif;
             margin-bottom: 15px;
+            @media screen and (max-width:600px) {
+                font-size: 1.25rem;
+            }
         }
         .text-box{
-            // border-radius: 3px;
-            width: inherit;
+             border: 2px solid $white;
+             border-radius: 23px;
+            //  border-bottom: 2px solid $white;
+             width:50%;
+            @media screen and (max-width:600px) {
+               
+            }
+            // width: inherit;
             input{
-                
+                width: 100%;
                 &::placeholder{
-                    font-family: "Audiowide", cursive !important;
+                   
                     font-weight: 600;
                     font-size: 1rem;
                 }
             }
+        }
+        .btn{
+            height: 35px;
+            width: 135px;
+            
+            border-radius: 23px;
+            font-size: 1rem;
+           
         }
     }

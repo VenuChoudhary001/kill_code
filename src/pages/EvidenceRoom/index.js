@@ -1,7 +1,7 @@
 
 import React, { useContext ,useState,useEffect} from "react";
 import List from "../../Components/List";
-import Navbar from "../../Components/Navbar";
+// import Navbar from "../../Components/Navbar";
 import SubNav from "../../Components/SubNav";
 import { BASE_URL } from "../../constants";
 import STORE from "../../Context/store";
@@ -48,7 +48,7 @@ useEffect(()=>{
 
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
       <SubNav />
       <section className="container">
         {evidence &&

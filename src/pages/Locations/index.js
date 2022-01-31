@@ -1,5 +1,5 @@
 import React from "react";
-import Navbar from "../../Components/Navbar";
+// import Navbar from "../../Components/Navbar";
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 
 const LOCATIONS = () => {
@@ -68,7 +68,7 @@ const LOCATIONS = () => {
   
   return (
     <>
-      <Navbar  />
+      {/* <Navbar  /> */}
       <section className="map-container">
        
 <MapContainer center={[51.505, -0.09]} style={{height:500,zIndex:1}} zoom={3} scrollWheelZoom={true}>

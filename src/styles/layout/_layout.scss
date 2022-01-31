@@ -107,8 +107,6 @@ $steps: 15;
 }
 
 .content {
-  height: 82%;
-//  max-height: 60vh;
-    // overflow-y: auto;
-    // overflow-x: hidden;
+  overflow: auto;
+  height: 100%;
 }

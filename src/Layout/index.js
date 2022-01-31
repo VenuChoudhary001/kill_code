@@ -1,4 +1,5 @@
 import React from 'react';
+import Navbar from '../Components/Navbar';
 import FOOTER from './footer';
 
 function Layout(props) {
@@ -7,8 +8,12 @@ function Layout(props) {
     <>
       <div className="background" >
         <div className="bg-overlay"></div>
-        <div className="content">{props.children}</div>
+     
+        <div className="content">
+        <Navbar/>
+          {props.children}
         <FOOTER/>
+          </div>
       </div>
     </>
   );

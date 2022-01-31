@@ -1,12 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
-import HEADER from "../Layout/header";
 import { useNavigate } from "react-router-dom";
 import STORE from "../Context/store";
 import Modal from "./Modal";
-import BUTTON from './Button';
+
 const Navbar = () => {
   const [show, setShow] = useState(false);
-  const [showModal,setShowModal]=useState(false);
+  const [showModal, setShowModal] = useState(false);
   const { active, setActive } = useContext(STORE);
   const navigate = useNavigate();
   let navItem = [
@@ -14,9 +13,10 @@ const Navbar = () => {
     "evidence",
     "profiles",
     "locations",
-    "rules",
+   
     "leaderboard",
-    "kill code"
+    "kill code",
+    "rules",
   ];
 
   const rulesContent = (
@@ -96,7 +96,7 @@ const Navbar = () => {
       </ul>
     </>
   );
-  
+
   /* eslint-disable */
   useEffect(() => {
     if (
@@ -129,16 +129,16 @@ const Navbar = () => {
         navigate("/locations", { replace: true });
         break;
       case "rules":
-        setActive(4);
-        navigate('/rules',{replace:true});
+       
+      setShowModal(true);
         break;
       case "leaderboard":
-        setActive(5);
+        setActive(4);
         navigate("/leaderboard", { replace: true });
         break;
       case "kill code":
-         setActive(6);
-         navigate("/killcode",{replace:true});
+        setActive(5);
+        navigate("/killcode", { replace: true });
         break;
       default:
         console.log("INVALID");
@@ -164,15 +164,12 @@ const Navbar = () => {
         setActive(3);
 
         break;
-      case "/rules":
-        setActive(4);
-        break;
       case "/leaderboard":
-        setActive(5);
+        setActive(4);
 
         break;
-        case "/killcode":
-         setActive(6);
+      case "/killcode":
+        setActive(5);
         break;
       default:
         console.log("INVALID");
@@ -194,47 +191,51 @@ const Navbar = () => {
     </div>
   );
   /* eslint-disable */
- const handleLogOut=()=>{
-  localStorage.removeItem("tkn");
-  navigate('/login')
- }
+  const handleLogOut = () => {
+    localStorage.removeItem("tkn");
+    navigate("/login");
+  };
   return (
     <>
       <section className="nav">
         <div className="brand-name">
-          <HEADER />
+          <img src={"kc.svg"} />
         </div>
         {navContent}
-        <div className="log-out">
-
-        <BUTTON lable={"LOG OUT"} action={handleLogOut}/>
-        </div>
+        <div className="log-out" onClick={handleLogOut}>
+                 LOG OUT
+              </div>
       </section>
       <section className="nav-mob">
         {!show && (
-          <div className="ham">
-            <svg
-              onClick={() => setShow(!show)}
-              width="35"
-              height="35"
-              viewBox="0 0 35 35"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M5.83398 8.75033C5.83398 8.36355 5.98763 7.99262 6.26112 7.71913C6.53461 7.44564 6.90554 7.29199 7.29232 7.29199H27.709C28.0958 7.29199 28.4667 7.44564 28.7402 7.71913C29.0137 7.99262 29.1673 8.36355 29.1673 8.75033C29.1673 9.1371 29.0137 9.50803 28.7402 9.78152C28.4667 10.055 28.0958 10.2087 27.709 10.2087H7.29232C6.90554 10.2087 6.53461 10.055 6.26112 9.78152C5.98763 9.50803 5.83398 9.1371 5.83398 8.75033Z"
-                fill="white"
-              />
-              <path
-                d="M5.83398 26.2503C5.83398 25.8636 5.98763 25.4926 6.26112 25.2191C6.53461 24.9456 6.90554 24.792 7.29232 24.792H27.709C28.0958 24.792 28.4667 24.9456 28.7402 25.2191C29.0137 25.4926 29.1673 25.8636 29.1673 26.2503C29.1673 26.6371 29.0137 27.008 28.7402 27.2815C28.4667 27.555 28.0958 27.7087 27.709 27.7087H7.29232C6.90554 27.7087 6.53461 27.555 6.26112 27.2815C5.98763 27.008 5.83398 26.6371 5.83398 26.2503Z"
-                fill="white"
-              />
-              <path
-                d="M16.0423 16.042C15.6555 16.042 15.2846 16.1956 15.0111 16.4691C14.7376 16.7426 14.584 17.1136 14.584 17.5003C14.584 17.8871 14.7376 18.258 15.0111 18.5315C15.2846 18.805 15.6555 18.9587 16.0423 18.9587H27.709C28.0958 18.9587 28.4667 18.805 28.7402 18.5315C29.0137 18.258 29.1673 17.8871 29.1673 17.5003C29.1673 17.1136 29.0137 16.7426 28.7402 16.4691C28.4667 16.1956 28.0958 16.042 27.709 16.042H16.0423Z"
-                fill="white"
-              />
-            </svg>
-          </div>
+          <>
+            <div className="brand-name">
+              <img src={"kc.svg"} />
+            </div>
+            <div className="ham">
+              <svg
+                onClick={() => setShow(!show)}
+                width="35"
+                height="35"
+                viewBox="0 0 35 35"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M5.83398 8.75033C5.83398 8.36355 5.98763 7.99262 6.26112 7.71913C6.53461 7.44564 6.90554 7.29199 7.29232 7.29199H27.709C28.0958 7.29199 28.4667 7.44564 28.7402 7.71913C29.0137 7.99262 29.1673 8.36355 29.1673 8.75033C29.1673 9.1371 29.0137 9.50803 28.7402 9.78152C28.4667 10.055 28.0958 10.2087 27.709 10.2087H7.29232C6.90554 10.2087 6.53461 10.055 6.26112 9.78152C5.98763 9.50803 5.83398 9.1371 5.83398 8.75033Z"
+                  fill="white"
+                />
+                <path
+                  d="M5.83398 26.2503C5.83398 25.8636 5.98763 25.4926 6.26112 25.2191C6.53461 24.9456 6.90554 24.792 7.29232 24.792H27.709C28.0958 24.792 28.4667 24.9456 28.7402 25.2191C29.0137 25.4926 29.1673 25.8636 29.1673 26.2503C29.1673 26.6371 29.0137 27.008 28.7402 27.2815C28.4667 27.555 28.0958 27.7087 27.709 27.7087H7.29232C6.90554 27.7087 6.53461 27.555 6.26112 27.2815C5.98763 27.008 5.83398 26.6371 5.83398 26.2503Z"
+                  fill="white"
+                />
+                <path
+                  d="M16.0423 16.042C15.6555 16.042 15.2846 16.1956 15.0111 16.4691C14.7376 16.7426 14.584 17.1136 14.584 17.5003C14.584 17.8871 14.7376 18.258 15.0111 18.5315C15.2846 18.805 15.6555 18.9587 16.0423 18.9587H27.709C28.0958 18.9587 28.4667 18.805 28.7402 18.5315C29.0137 18.258 29.1673 17.8871 29.1673 17.5003C29.1673 17.1136 29.0137 16.7426 28.7402 16.4691C28.4667 16.1956 28.0958 16.042 27.709 16.042H16.0423Z"
+                  fill="white"
+                />
+              </svg>
+            </div>
+          </>
         )}
         {show && (
           <>
@@ -255,15 +256,16 @@ const Navbar = () => {
                 </svg>
               </div>
               {navContent}
-              <div className="log-out">
-
-<BUTTON lable={"LOG OUT"} action={handleLogOut}/>
-</div>
+              <div className="log-out"onClick={handleLogOut}>
+                 LOG OUT
+              </div>
             </main>
           </>
         )}
       </section>
-      {showModal && <Modal content={rulesContent} setShow={()=>setShowModal(false)} />}
+      {showModal && (
+        <Modal content={rulesContent} setShow={() => setShowModal(false)} />
+      )}
     </>
   );
 };

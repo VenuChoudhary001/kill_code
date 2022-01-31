@@ -1,4 +1,5 @@
 .nav {
+ 
   @media screen and (max-width: 1024px) {
     display: none;
   }
@@ -8,34 +9,31 @@
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 25;
-  backdrop-filter: blur(27px);
+  z-index: 30;
+  backdrop-filter: blur(2px);
   .log-out{
-    .btn{
-        width: 91px;
-        height: 31px;
-        font-size: 0.7rem;
-        // font-weight: bold;
-        background-color: $dark-black;
-        &:hover{
-          background-color: #5F0404;
-          border: none;
-        }
+    text-transform: uppercase;
+    padding: 20px;
+    font-size: 1.5rem;
+    color: $white;
+    font-weight: bold;
+    cursor: pointer;
+    &:hover{
+      color: $red;
+    }
+    @media screen and (max-width:1380px) {
+          padding: 10px;
+          font-size: 1.2rem;
     }
   }
   .brand-name {
-    .text{
-           width: 200px;
-          height: clamp(30px, 4.3vw, 60px) !important;
-          .killcode{
-            font-size:  clamp(30px, 4.3vw, 60px) !important;
-            z-index: 65;
-          }
-          .killing{
-             font-size: clamp(5px, 1vw, 15px) !important;
-             z-index: 80;
-              //  margin-bottom: clamp(30px, 7.9vw, 110px);
-          }
+    img{
+      width: 200px;
+      object-fit: contain;
+      margin-left: 10px;
+      @media screen and (max-width:1380px) {
+        width: 150px;
+  }
     }
   }
   .nav-menu {
@@ -50,6 +48,10 @@
       cursor: pointer;
       &:hover{
         color: $red;
+      }
+      @media screen and (max-width:1380px) {
+            padding: 10px;
+            font-size: 1.2rem;
       }
     }
     .active{
@@ -67,13 +69,21 @@
   position: sticky;
   top: 0;
   left: 0;
-  padding: 10px 15px;
+  padding: 8px 15px;
   z-index: 60;
   background-color: $dark-black;
-  backdrop-filter: blur(31px);
-
+  backdrop-filter: blur(3px);
+  @include flexCenter;
+  justify-content: space-between;
+  .brand-name {
+    img{
+      width: 180px;
+      object-fit: contain;
+      margin-left: 10px
+    }
+  }
   .ham {
-    margin-left: auto;
+   
     max-width: fit-content;
   }
   .side-bar {
@@ -91,19 +101,16 @@
       
     }
     .log-out{
-       
-      .btn{
-        margin: 1px;
-          width: 91px;
-          height: 31px;
-          font-size: 0.7rem;
-          // font-weight: bold;
-          background-color: $dark-black;
-          &:hover{
-            background-color: #5F0404;
-            border: none;
-          }
-      }
+      color: $gray;
+      padding: 10px 0;
+        font-size: 1.25rem;
+        width: 100%;
+        cursor: pointer;
+        &:hover {
+          transition: all 0.02s ease-in-out;
+          border-bottom: 1px solid white;
+          color: $white;
+        }
     }
     .nav-menu {
       @include flexCenter;

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import BUTTON from '../../Components/Button';
-import Navbar from '../../Components/Navbar';
+// import Navbar from '../../Components/Navbar';
 import TextBox from '../../Components/TextBox';
 import { BASE_URL } from '../../constants';
 const KILL_CODE = () => {
@@ -43,7 +43,7 @@ const KILL_CODE = () => {
 
 
   return <>
-  <Navbar/>
+  {/* <Navbar/> */}
   <section className='container'>
       <main className='kill-code'>
 
@@ -51,6 +51,7 @@ const KILL_CODE = () => {
      <TextBox action={(e)=>setCode(e.target.value)} placeholder={"KILLCODE"} />
      <BUTTON lable={"SUBMIT"} action={handleClick} />
       </main>
+      
   </section>
   </>;
 };

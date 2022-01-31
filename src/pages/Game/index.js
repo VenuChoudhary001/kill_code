@@ -1,5 +1,5 @@
 import React, { useContext, useState ,useEffect} from "react";
-import Navbar from "../../Components/Navbar";
+// import Navbar from "../../Components/Navbar";
 import SubNav from "../../Components/SubNav";
 import TextBox from "../../Components/TextBox";
 import Knife from "../../Assets/images/knife.png";
@@ -74,9 +74,11 @@ const GAME = () => {
   if (currRound && currRound.message === "No rounds live") {
     return (
       <>
-        <Navbar />
+        {/* <Navbar /> */}
         {currRound.next_round_start_time ? (
           <>
+          <div className="container">
+            
             <div className="info-text">
               Round {currRound.next_round} Starts In
               <br />
@@ -113,6 +115,7 @@ const GAME = () => {
                 </div>
               </div>
             )}
+          </div>
           </>
         ) : (
           <div className="info-text">TIME TO SOLVE KILL CODE</div>
@@ -123,7 +126,7 @@ const GAME = () => {
 
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
       <SubNav />
       <section className="container">
         <main className="game">

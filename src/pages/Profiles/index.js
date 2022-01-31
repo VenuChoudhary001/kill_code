@@ -1,7 +1,7 @@
 import axios from "axios";
 import React,{useEffect,useState} from "react";
 import List from "../../Components/List";
-import Navbar from "../../Components/Navbar";
+// import Navbar from "../../Components/Navbar";
 import SubNav from "../../Components/SubNav";
 import { BASE_URL } from "../../constants";
 
@@ -29,7 +29,7 @@ const PROFILES = () => {
 
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
       <SubNav/>
       <section className="container">
         {profiles &&
