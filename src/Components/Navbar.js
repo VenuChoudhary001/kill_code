@@ -138,6 +138,7 @@ const Navbar = () => {
         break;
       case "leaderboard":
         setActive(4);
+        setShow(!show);
         navigate("/leaderboard", { replace: true });
         break;
       case "kill code":
@@ -198,6 +199,7 @@ const Navbar = () => {
   /* eslint-disable */
   const handleLogOut = () => {
     localStorage.removeItem("tkn");
+    setShow(!show);
     navigate("/login");
   };
   return (

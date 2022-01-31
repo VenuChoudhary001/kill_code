@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 // import Navbar from "../../Components/Navbar";
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
+import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import { useNavigate } from "react-router-dom";
 
 const LOCATIONS = () => {
-  const navigate=useNavigate();
+  const navigate = useNavigate();
   const data = [
     {
       name: "Wakanda",
@@ -18,7 +18,8 @@ const LOCATIONS = () => {
     },
     {
       name: "Asgard",
-      Latitude: 65.65881, Longitude: 25.28571,
+      Latitude: 65.65881,
+      Longitude: 25.28571,
     },
     {
       name: "Queens",
@@ -57,7 +58,8 @@ const LOCATIONS = () => {
     },
     {
       name: "Muspelheim",
-      Latitude: 67.65881, Longitude: 60.28571,
+      Latitude: 67.65881,
+      Longitude: 60.28571,
     },
     {
       name: "Titan",
@@ -66,30 +68,34 @@ const LOCATIONS = () => {
     },
   ];
   /* eslint-disable */
-  useEffect(()=>{
+  useEffect(() => {
     if (
       !localStorage.getItem("tkn") ||
       localStorage.getItem("tkn") === undefined
     )
       navigate("/");
-  },[])
+  }, []);
   return (
     <>
       {/* <Navbar  /> */}
       <section className="map-container">
-       
-<MapContainer center={[51.505, -0.09]} style={{height:500,zIndex:1}} zoom={3} scrollWheelZoom={true}>
-  <TileLayer
-    attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-  />
-  
-  {data.map(item=><Marker position={[item.Latitude, item.Longitude]}>
-    <Popup>
-      {item.name}
-    </Popup>
-  </Marker>)}
-</MapContainer>
+        <MapContainer
+          center={[51.505, -0.09]}
+          style={{ height: 500, zIndex: 1 }}
+          zoom={3}
+          scrollWheelZoom={true}
+        >
+          <TileLayer
+            attribution='&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>,&copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
+            url="https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png"
+          />
+
+          {data.map((item) => (
+            <Marker position={[item.Latitude, item.Longitude]}>
+              <Popup>{item.name}</Popup>
+            </Marker>
+          ))}
+        </MapContainer>
       </section>
     </>
   );
