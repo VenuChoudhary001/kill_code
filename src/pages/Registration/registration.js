@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { BASE_URL } from "../../constants";
 import HEADER from "../../Layout/header";
 import "./registration.scss";
 
@@ -68,7 +69,7 @@ function Registration() {
       participant4_phone: form.participant4_phone,
     };
     console.log(dat);
-    fetch("https://killcode.myrealms.in/quiz/register", {
+    fetch(`${BASE_URL}quiz/register`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -10,11 +10,11 @@ function Home() {
   const start = () => {
     audio.play()
   }
-
+/* eslint-disable */
   useEffect(() => {
     if(localStorage.getItem("tkn") && localStorage.getItem("tkn")!==undefined)
       navigate('/game')
-  }, [navigate])
+  }, [])
 
   return (
     <>

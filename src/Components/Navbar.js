@@ -3,6 +3,7 @@ import HEADER from "../Layout/header";
 import { useNavigate } from "react-router-dom";
 import STORE from "../Context/store";
 import Modal from "./Modal";
+import BUTTON from './Button';
 const Navbar = () => {
   const [show, setShow] = useState(false);
   const [showModal,setShowModal]=useState(false);
@@ -96,7 +97,14 @@ const Navbar = () => {
     </>
   );
   
-  
+  /* eslint-disable */
+  useEffect(() => {
+    if (
+      !localStorage.getItem("tkn") ||
+      localStorage.getItem("tkn") === undefined
+    )
+      navigate("/");
+  }, []);
 
   const handleClick = async (e) => {
     switch (e.target.ariaLabel) {
@@ -121,7 +129,8 @@ const Navbar = () => {
         navigate("/locations", { replace: true });
         break;
       case "rules":
-         setShowModal(true);
+        setActive(4);
+        navigate('/rules',{replace:true});
         break;
       case "leaderboard":
         setActive(5);
@@ -155,6 +164,9 @@ const Navbar = () => {
         setActive(3);
 
         break;
+      case "/rules":
+        setActive(4);
+        break;
       case "/leaderboard":
         setActive(5);
 
@@ -182,7 +194,10 @@ const Navbar = () => {
     </div>
   );
   /* eslint-disable */
-
+ const handleLogOut=()=>{
+  localStorage.removeItem("tkn");
+  navigate('/login')
+ }
   return (
     <>
       <section className="nav">
@@ -190,6 +205,10 @@ const Navbar = () => {
           <HEADER />
         </div>
         {navContent}
+        <div className="log-out">
+
+        <BUTTON lable={"LOG OUT"} action={handleLogOut}/>
+        </div>
       </section>
       <section className="nav-mob">
         {!show && (
@@ -236,6 +255,10 @@ const Navbar = () => {
                 </svg>
               </div>
               {navContent}
+              <div className="log-out">
+
+<BUTTON lable={"LOG OUT"} action={handleLogOut}/>
+</div>
             </main>
           </>
         )}

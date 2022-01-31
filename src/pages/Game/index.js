@@ -7,14 +7,15 @@ import BUTTON from "../../Components/Button";
 import STORE from "../../Context/store";
 import CountDown from "../../Components/CountDown";
 import { BASE_URL } from "../../constants";
+import { useEffect } from "react/cjs/react.development";
 
 const GAME = () => {
-  const { currRound,status, setStatus} = useContext(STORE);
+  const { currRound, status, setStatus ,setCurrRound} = useContext(STORE);
 
   const [location, setLocation] = useState("");
   const [victim, setVictim] = useState("");
- /* eslint-disable */
 
+  /* eslint-disable */
   const getStatus = async () => {
     try {
       let headers = {
@@ -24,14 +25,13 @@ const GAME = () => {
       let res = await fetch(`${BASE_URL}quiz/storeAnswer`, {
         method: "POST",
         headers: { ...headers },
-        body:JSON.stringify( {
+        body: JSON.stringify({
           location: location,
           victim: victim,
         }),
       });
-      let data=await res.json()
-      if(data.message==="Answer saved successfully."){
-;
+      let data = await res.json();
+      if (data.message === "Answer saved successfully.") {
         setStatus(data);
       }
       console.log(data);
@@ -39,7 +39,7 @@ const GAME = () => {
       console.log(error);
     }
   };
-
+  
   const handleSubmit = (e) => {
     if (location !== "" && victim !== "") {
       getStatus();
@@ -47,7 +47,25 @@ const GAME = () => {
       alert("PLEASE ENTER BOTH THE FIELDS");
     }
   };
-
+  /*eslint-disable */
+  useEffect(()=>{
+    async () => {
+      try {
+        let headers = {
+          "Content-Type": "application/json",
+          Authorization: "Token " + localStorage.getItem("tkn"),
+        };
+        let res = await axios.get(`${BASE_URL}quiz/round`, {
+          headers: { ...headers },
+        });
+         console.log(res.data);
+        setCurrRound(res.data);
+      } catch (error) {
+        console.log(error.response);
+        setCurrRound(error.response.data)
+      }
+    };
+  },[])
   if (currRound && currRound.message === "No rounds live") {
     return (
       <>
@@ -60,19 +78,36 @@ const GAME = () => {
             </div>
             <CountDown end={currRound.next_round_start_time} />
             <div className="opinion"></div>
-           {currRound.next_round==1 && <div className="container">
-             <div className="fore-word">
-
-             The DS PD has been investigating the death of Anatoly Fernandez for a week now. But recent developments have shifted our focus. Today morning, a note arrived at the DS PD precinct, which we believe is from the killer. This is a substantial development. The note, its timing and tone make us believe this is not a scattered homicide, rather the first in a pattern in the work of a serial killer. 
-               <br/>
-Along with the note, we have received a map and a set of profiles. This falls in line with the tendency of most serial killers' need to have their genius acknowledged. The DS PD makes this information public to all of you in the hopes of stopping the murderer before he kills another. 
-               <br/>
-The map can be found under the Map tab on the website and the profiles can be found under the Character tab. The killer has also left us a poem at the crime scene, which has been stored under the Evidence tab with all other evidence that has been found at the crime scene. We believe these poems may prove to be some kind of a metaphorical message to us, that could help us stop him. 
-               <br/>
-Good luck to you all, and may we succeed in bringing down the killer.
-             </div>
-
-            </div>}
+            {currRound.next_round == 1 && (
+              <div className="container">
+                <div className="fore-word">
+                  The DS PD has been investigating the death of Anatoly
+                  Fernandez for a week now. But recent developments have shifted
+                  our focus. Today morning, a note arrived at the DS PD
+                  precinct, which we believe is from the killer. This is a
+                  substantial development. The note, its timing and tone make us
+                  believe this is not a scattered homicide, rather the first in
+                  a pattern in the work of a serial killer.
+                  <br />
+                  Along with the note, we have received a map and a set of
+                  profiles. This falls in line with the tendency of most serial
+                  killers' need to have their genius acknowledged. The DS PD
+                  makes this information public to all of you in the hopes of
+                  stopping the murderer before he kills another.
+                  <br />
+                  The map can be found under the Map tab on the website and the
+                  profiles can be found under the Character tab. The killer has
+                  also left us a poem at the crime scene, which has been stored
+                  under the Evidence tab with all other evidence that has been
+                  found at the crime scene. We believe these poems may prove to
+                  be some kind of a metaphorical message to us, that could help
+                  us stop him.
+                  <br />
+                  Good luck to you all, and may we succeed in bringing down the
+                  killer.
+                </div>
+              </div>
+            )}
           </>
         ) : (
           <div className="info-text">TIME TO SOLVE KILL CODE</div>
@@ -87,15 +122,17 @@ Good luck to you all, and may we succeed in bringing down the killer.
       <SubNav />
       <section className="container">
         <main className="game">
-          {status && <div className="status-text">You have {status && status.tries_left} tries left</div>}
+          {status && (
+            <div className="status-text">
+              You have {status && status.tries_left} tries left
+            </div>
+          )}
           <div className="riddle">
             {currRound && (
               <>
                 {" "}
                 <div className="line1">{currRound.riddle}</div>
-                <div className="line1">{currRound.riddle}</div>
-                <div className="line1">{currRound.riddle}</div>
-                <div className="line1">{currRound.riddle}</div>
+                
               </>
             )}
           </div>
@@ -124,7 +161,11 @@ Good luck to you all, and may we succeed in bringing down the killer.
               placeholder={"Victim"}
             />
           </div>
-          <BUTTON disable={status && status.tries_left==0? true : false} lable={"SUBMIT"} action={handleSubmit} />
+          <BUTTON
+            disable={status && status.tries_left == 0 ? true : false}
+            lable={"SUBMIT"}
+            action={handleSubmit}
+          />
         </main>
       </section>
     </>
