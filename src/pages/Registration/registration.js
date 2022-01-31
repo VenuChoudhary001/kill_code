@@ -13,7 +13,7 @@ function Registration() {
       localStorage.getItem("tkn") &&
       localStorage.getItem("tkn") !== undefined
     )
-      navigate("/timer/");
+      navigate("/game");
   }, [navigate]);
 
   const [msg, setMsg] = useState("");

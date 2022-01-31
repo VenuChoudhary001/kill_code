@@ -14,7 +14,7 @@ function Login() {
     if(localStorage.getItem("tkn") && localStorage.getItem("tkn")!==undefined)
       {
         setUser({...user,token:localStorage.getItem('tkn')});
-        navigate('/timer/')
+        navigate('/game')
       }
   }, []);
 
@@ -56,7 +56,7 @@ function Login() {
         if (data.token && data.token !== undefined) {
           localStorage.setItem("tkn", data.token);
           setUser({...user,token:data.token});
-          navigate("/timer/");
+          navigate("/game");
         } else {
           console.log("error");
         }
