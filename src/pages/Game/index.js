@@ -54,19 +54,22 @@ const GAME = () => {
         "Content-Type": "application/json",
         Authorization: "Token " + localStorage.getItem("tkn"),
       };
-      let res = await axios.get(`${BASE_URL}quiz/round`, {
+      let res = await fetch(`${BASE_URL}quiz/round`, {
         headers: { ...headers },
+        method:"GET"
       });
-       console.log(res.data);
-      setCurrRound(res.data);
+      //  console.log(res.data);
+      let result=await res.json();
+      setCurrRound(result);
     } catch (error) {
-      console.log(error.response);
-      setCurrRound(error.response.data)
+      console.log(error);
+      setCurrRound(error)
     }
   };
   /*eslint-disable */
   useEffect(()=>{
     update();
+    console.log("HELLo");
   },[])
   if (currRound && currRound.message === "No rounds live") {
     return (

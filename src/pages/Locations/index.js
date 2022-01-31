@@ -65,13 +65,13 @@ const LOCATIONS = () => {
     },
   ];
   
- 
+  const [center,setCenter]=React.useState([51.505, -0.09])
   return (
     <>
       <Navbar />
       <section className="map-container">
        
-<MapContainer center={[51.505, -0.09]} style={{height:500}} zoom={13} scrollWheelZoom={false}>
+<MapContainer center={center} style={{height:500,zIndex:-1}} zoom={3} scrollWheelZoom={true}>
   <TileLayer
     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

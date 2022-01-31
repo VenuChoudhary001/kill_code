@@ -18,11 +18,12 @@ const getData=async ()=>{
       "Content-Type": "application/json",
       Authorization: "Token " + localStorage.getItem("tkn"),
     };
-    let res= await axios.get(`${BASE_URL}quiz/evidence`,{headers:headers});
-    console.log(res.data);
-    setEvidence(res.data);
+    let res= await fetch(`${BASE_URL}quiz/evidence`,{headers:headers,method:"GET"});
+    // console.log(res.data);
+    let result=await res.json();
+    setEvidence(result);
   } catch (error) {
-    console.log(error.response);
+    console.log(error);
   }
   
 }
