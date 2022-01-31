@@ -5,6 +5,9 @@
     // height: 100%;
     @include flexCenter;
     font-weight: 600;
+    @media screen and(max-width:600px) {
+        font-size: 1.2rem;
+    }
 }
 .status-text{
     color: $light-red;

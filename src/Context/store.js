@@ -41,9 +41,7 @@ export const PROVIDER = ({ children }) => {
     if (apiCall) {
       getData();
       setApiCall(false);
-    }
-   
-    
+    } 
   }, [apiCall]);
 
 

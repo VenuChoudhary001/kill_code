@@ -1,6 +1,5 @@
 import axios from "axios";
-import React from "react";
-import { useEffect, useState } from "react/cjs/react.development";
+import React,{useEffect,useState} from "react";
 import List from "../../Components/List";
 import Navbar from "../../Components/Navbar";
 import SubNav from "../../Components/SubNav";
@@ -23,6 +22,7 @@ const PROFILES = () => {
     setProfiles(res.data);
   }
 
+  /* eslint-disable */
   useEffect(()=>{
     getData();
   },[])
