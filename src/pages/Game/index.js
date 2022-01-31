@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState ,useEffect} from "react";
 import Navbar from "../../Components/Navbar";
 import SubNav from "../../Components/SubNav";
 import TextBox from "../../Components/TextBox";
@@ -7,7 +7,7 @@ import BUTTON from "../../Components/Button";
 import STORE from "../../Context/store";
 import CountDown from "../../Components/CountDown";
 import { BASE_URL } from "../../constants";
-import { useEffect } from "react/cjs/react.development";
+
 
 const GAME = () => {
   const { currRound, status, setStatus ,setCurrRound} = useContext(STORE);
@@ -47,24 +47,26 @@ const GAME = () => {
       alert("PLEASE ENTER BOTH THE FIELDS");
     }
   };
+
+  const update= async () => {
+    try {
+      let headers = {
+        "Content-Type": "application/json",
+        Authorization: "Token " + localStorage.getItem("tkn"),
+      };
+      let res = await axios.get(`${BASE_URL}quiz/round`, {
+        headers: { ...headers },
+      });
+       console.log(res.data);
+      setCurrRound(res.data);
+    } catch (error) {
+      console.log(error.response);
+      setCurrRound(error.response.data)
+    }
+  };
   /*eslint-disable */
   useEffect(()=>{
-    async () => {
-      try {
-        let headers = {
-          "Content-Type": "application/json",
-          Authorization: "Token " + localStorage.getItem("tkn"),
-        };
-        let res = await axios.get(`${BASE_URL}quiz/round`, {
-          headers: { ...headers },
-        });
-         console.log(res.data);
-        setCurrRound(res.data);
-      } catch (error) {
-        console.log(error.response);
-        setCurrRound(error.response.data)
-      }
-    };
+    update();
   },[])
   if (currRound && currRound.message === "No rounds live") {
     return (
