@@ -50,6 +50,14 @@
         //  overflow-y: auto;
         //  overflow-x: hidden;
         min-width: 400px;
+        .note_killer_modal{
+            font-size: 1.25rem;
+            
+            li{
+                list-style: none;
+                margin-bottom: 20px;
+            }
+        }
          .evidence{
              .heading{
                  font-size: 2rem;
@@ -62,6 +70,17 @@
                  padding-top: 15px;
 
                  font-size: 1rem;
+             }
+             .evi{
+                 @include flexCenter;
+                 justify-content: space-evenly;
+                 img{
+                    height: 170px;
+                    width: auto;
+                     object-fit: contain;
+                     margin:10px;
+                     border: 2px solid $white;
+                 }
              }
          }
          .profile{
@@ -132,6 +151,7 @@
     display: grid;
     grid-template-rows:auto;
     grid-gap: 0.5rem;
+    place-content: baseline;
     padding: 20px;
     background-color: $dark-black;
     backdrop-filter: blur(15px);
@@ -181,7 +201,39 @@
         }
     }
     .evidence{
-        
+        .correct_ans{
+            font-size: 1.2rem;
+            color: $red;
+            font-weight: bold;
+        }
+        .note_killer_modal{
+            color: $white;
+            font-size: 1rem;
+        }
+        .evi{
+            @include flexCenter;
+            @media screen and( max-width:600px) {
+                flex-direction: column;
+            }
+            justify-content: space-evenly;
+            img{
+               height: 170px;
+               width: auto;
+                object-fit: contain;
+                @media screen and( max-width:600px) {
+                    height: 200px;
+                    margin: 5px;
+                }
+            }
+        }
+        .note_killer_modal{
+            font-size: 1.25rem;
+            
+            li{
+                list-style: none;
+                margin-bottom: 20px;
+            }
+        }
         .heading{
             color: $red;
             font-size: 18px;

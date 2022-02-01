@@ -46,10 +46,13 @@ const List = ({type,item}) => {
   
     return (
       <article className="evidence">
-        <div className="heading">NOTES FROM THE KILLER</div>
-        <div className="info">{item.killer_note}</div>
         <div className="heading">RIDDLE</div>
-        <div className="info">{item.riddle}</div>
+        <div dangerouslySetInnerHTML={{__html:`${item.riddle}`}} className="info"/>
+        {item.correct_ans && <div className="correct_ans">Victim : {item.correct_ans}</div>}
+        <div className='evi'>
+         {item.encrypt_img && <div className="img"><img src={`${BASE_URL}media/${item.encrypt_img}`} alt=""/></div>}
+           {item.evidence_img && <div className="img"><img src={`${BASE_URL}media/${item.evidence_img}`} alt=""/></div>}
+        </div>
       </article>
     );
   };

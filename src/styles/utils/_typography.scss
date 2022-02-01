@@ -18,3 +18,71 @@
     margin-bottom: 20px;
     font-weight: bold;
 }
+.opinion{
+    color: $white;
+    font-size: 1.25rem;
+
+}
+.info-evi{
+    color: $white;
+    text-align: center;
+    font-size: 1.25rem;
+    margin: 20px;
+    font-weight: bold;
+    img{
+        width: 200px;
+        object-fit: contain;
+    margin: 20px;
+
+    }
+}
+.ans_{
+    text-align: center;
+    font-weight: bold;
+    font-size: 2rem;
+    color: $light-red;
+    background-color: $dark-black;
+    padding: 10px;
+    border: 3px solid $red ;
+    border-radius: 6px;
+}
+
+.info-text-final{
+    color: $dark-red;
+    text-align: center;
+    font-size: 3.5rem;
+    font-family: 'Montserrat';
+
+     height: 200px;
+    @include flexCenter;
+    font-weight: 600;
+    @media screen and(max-width:600px) {
+        font-size: 1.2rem;
+    }
+}
+
+.notes_killer{
+    color:red;
+    font-size: 1.2rem;
+    margin:5px 0 10px 5px;
+    font-weight: 400;
+    background-color: $dark-black;
+    border-radius: 2px;
+    padding:4px 20px;
+    &:hover{
+        color: $dark-red;
+        cursor: pointer;
+        border-bottom: 1px solid $red;
+    }
+}
+
+.info{
+    color:$white;
+    font-size: $red;
+}
+
+.note-title{
+    color: $red;
+    font-weight: bold;
+    font-size: 1.5rem;
+}

@@ -1,6 +1,7 @@
 import React from 'react';
 
 const Modal = ({setShow,content}) => {
+  console.log(content)
   return (
     <>
     <div className="modal-overlay" onClick={setShow}></div>
