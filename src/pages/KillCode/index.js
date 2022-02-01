@@ -76,7 +76,7 @@ useEffect(()=>{
        {msg && <div>The answer you entered was {msg}</div>}
      <div className='kill-title'>ENTER KILL CODE</div>
      <TextBox action={(e)=>setCode(e.target.value)} placeholder={"KILLCODE"} />
-     <BUTTON lable={"SUBMIT"} action={handleClick} />
+     <BUTTON lable={"SUBMIT"} disable={true} action={handleClick} />
       </main>
       
   </section>
