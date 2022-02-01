@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import STORE from "../Context/store";
 
 const CountDown = ({end}) => {
-  const {setApiCall,currRound}=useContext(STORE);
+  const {setApiCall,currRound,setStatus}=useContext(STORE);
   const [hours, setHours] = useState(0);
   const [mins, setMins] = useState(0);
   const [sec, setSec] = useState(0);
@@ -39,8 +39,9 @@ const CountDown = ({end}) => {
 
       let myInterval=setInterval(() => {
         calculateTime();
-        if(currRound && (new Date() >= new Date(currRound.end_time)||(new Date() >= new Date(currRound.next_round_start_time)))){
+        if(currRound && (new Date().getTime() >= new Date(currRound.end_time).getTime()||(new Date().getTime() >= new Date(currRound.next_round_start_time).getTime()))){
           setApiCall(true);
+          setStatus();
         }
       }, 1000);
       

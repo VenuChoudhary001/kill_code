@@ -8,6 +8,7 @@ import STORE from "../../Context/store";
 import CountDown from "../../Components/CountDown";
 import { BASE_URL } from "../../constants";
 import { useNavigate } from "react-router-dom";
+import Loading from "../../Components/Loading";
 
 
 const GAME = () => {
@@ -15,7 +16,9 @@ const GAME = () => {
 
   const [location, setLocation] = useState("");
   const [victim, setVictim] = useState("");
+  
 
+ 
   /* eslint-disable */
   const getStatus = async () => {
     try {
@@ -32,6 +35,7 @@ const GAME = () => {
         }),
       });
       let data = await res.json();
+      // co",data);
       if (data.message === "Answer saved successfully.") {
         setStatus(data);
       }
@@ -61,8 +65,8 @@ const GAME = () => {
         headers: { ...headers },
         method:"GET"
       });
-      //  console.log(res.data);
       let result=await res.json();
+      console.log(result);
       setCurrRound(result);
     } catch (error) {
       console.log(error); 
@@ -81,10 +85,15 @@ const GAME = () => {
     )
       navigate("/");
   },[])
+
+  if(!currRound){
+    return <Loading/>
+  }
+
+
   if (currRound && currRound.message === "No rounds live") {
     return (
       <>
-        {/* <Navbar /> */}
         {currRound.next_round_start_time ? (
           <>
           <div className="container">
@@ -94,7 +103,9 @@ const GAME = () => {
               <br />
             </div>
             <CountDown end={currRound.next_round_start_time} />
-            <div className="opinion"></div>
+            {currRound.flag==0 && <>YOU HAVE FAILED <div className="opinion">{currRound.correct_ans} has been killed</div></>}
+            {currRound.flag==1 &&  <>YOU SAVED THE DAY</>}
+            
             {currRound.next_round == 1 && (
               <div className="container">
                 <div className="fore-word">

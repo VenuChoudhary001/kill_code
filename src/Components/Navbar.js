@@ -205,7 +205,7 @@ const Navbar = () => {
   return (
     <>
       <section className="nav">
-        <div className="brand-name">
+        <div className="brand-name"  >
           <img src={"kc.svg"} />
         </div>
         {navContent}

@@ -5,11 +5,12 @@ import List from "../../Components/List";
 // import Navbar from "../../Components/Navbar";
 import SubNav from "../../Components/SubNav";
 import { useNavigate } from "react-router-dom";
+import Loading from "../../Components/Loading";
 
 
 const LEADERBOARD = () => {
   // const { data } = useContext(STORE);
-  const [data,setData]=useState([]);
+  const [data,setData]=useState();
   const navigate=useNavigate();
   const getData = async () => {
     try {
@@ -40,6 +41,9 @@ const LEADERBOARD = () => {
     )
       navigate("/");
   },[])
+  if(!data){
+    return <Loading/>
+  }
   return (
     <>
       {/* <Navbar /> */}

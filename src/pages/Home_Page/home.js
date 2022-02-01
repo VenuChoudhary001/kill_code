@@ -18,6 +18,8 @@ function Home() {
 
   return (
     <>
+   
+
       <div className="homePage">
         <HEADER/>
         <div className="buttonWrapper">
@@ -29,6 +31,7 @@ function Home() {
           </Link>
         </div>
       </div>
+
     </>
   );
 }

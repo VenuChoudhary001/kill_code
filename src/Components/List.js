@@ -47,7 +47,7 @@ const List = ({type,item}) => {
     return (
       <article className="evidence">
         <div className="heading">NOTES FROM THE KILLER</div>
-        <div className="info">{item.killer_msg}</div>
+        <div className="info">{item.killer_note}</div>
         <div className="heading">RIDDLE</div>
         <div className="info">{item.riddle}</div>
       </article>

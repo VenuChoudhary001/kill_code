@@ -28,4 +28,7 @@
     width: 100%;
     border: 3px solid $red;
     border-radius: 8px;
+    @media screen and (max-width:600px) {
+        border:2px solid $red;
+    }
 }

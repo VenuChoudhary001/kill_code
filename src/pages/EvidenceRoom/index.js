@@ -2,6 +2,7 @@
 import React, { useContext ,useState,useEffect} from "react";
 import { useNavigate } from "react-router-dom";
 import List from "../../Components/List";
+import Loading from "../../Components/Loading";
 // import Navbar from "../../Components/Navbar";
 import SubNav from "../../Components/SubNav";
 import { BASE_URL } from "../../constants";
@@ -22,6 +23,7 @@ const getData=async ()=>{
     let res= await fetch(`${BASE_URL}quiz/evidence`,{headers:headers,method:"GET"});
     // console.log(res.data);
     let result=await res.json();
+    console.log(result);
     setEvidence(result);
   } catch (error) {
     console.log(error);
@@ -43,7 +45,9 @@ useEffect(()=>{
     navigate("/");
 },[])
 
-
+if(!evidence){
+  return <Loading/>
+}
   return (
     <>
       <SubNav />
