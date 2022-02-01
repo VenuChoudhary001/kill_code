@@ -54,16 +54,13 @@ const EVIDENCE_ROOM = () => {
 
   const contentNote = () => {
     if(!evidence.killer_note){
-      return<><div className="info">NO NOTES AVAILABLE</div></>
+      return<><div className="info---">NO NOTES AVAILABLE</div></>
     }
     const note =evidence && evidence.killer_note && evidence.killer_note;
     return (
       <>
       <div className="note-title">NOTES FROM THE KILLER  </div>
-      <div className="note_killer_modal">
-         {note}
-       
-      </div>
+      <div className="note_killer_modal" dangerouslySetInnerHTML={{__html:`${note}`}}/>
       </>
     );
   };

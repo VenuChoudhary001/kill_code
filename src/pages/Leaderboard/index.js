@@ -9,7 +9,7 @@ import Loading from "../../Components/Loading";
 import STORE from "../../Context/store";
 
 const LEADERBOARD = () => {
-  const { setActive } = useContext(STORE);
+  const { setActive ,leaderCall,setLeaderCall} = useContext(STORE);
   const [data,setData]=useState();
   const navigate=useNavigate();
   const getData = async () => {
@@ -35,13 +35,17 @@ const LEADERBOARD = () => {
  
   /*eslint-disable */
   useEffect(()=>{
-     getData();
+    if(leaderCall){
+
+      getData();
+      setLeaderCall(!leaderCall);
+    }
      if (
       !localStorage.getItem("tkn") ||
       localStorage.getItem("tkn") === undefined
     )
    {setActive(null);   navigate("/");}
-  },[])
+  },[leaderCall])
   if(!data){
     return <Loading/>
   }

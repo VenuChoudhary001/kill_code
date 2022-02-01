@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import STORE from "../Context/store";
 
 const CountDown = ({end}) => {
-  const {setApiCall,currRound,setStatus}=useContext(STORE);
+  const {setApiCall,currRound,setStatus,setLeaderCall}=useContext(STORE);
   const [hours, setHours] = useState(0);
   const [mins, setMins] = useState(0);
   const [sec, setSec] = useState(0);
@@ -14,7 +14,7 @@ const CountDown = ({end}) => {
         const date= new Date();
        const dDay=new Date(end);
       let diff=dDay-date;
-      // console.log(date,dDay);
+    
     let dayCount = Math.floor((diff) / (1000 * 24 * 60 * 60));
     let hrsCount = Math.floor(
       ((diff) % (1000 * 24 * 60 * 60)) / (1000 * 60 * 60)
@@ -41,6 +41,7 @@ const CountDown = ({end}) => {
         calculateTime();
         if(currRound && (new Date().getTime() >= new Date(currRound.end_time).getTime()||(new Date().getTime() >= new Date(currRound.next_round_start_time).getTime()))){
           setApiCall(true);
+          setLeaderCall(!leaderCall)
           setStatus();
         }
       }, 1000);

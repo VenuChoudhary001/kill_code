@@ -67,6 +67,19 @@ const LOCATIONS = () => {
       Latitude: 11.58501,
       Longitude: -79.12818,
     },
+    {
+      Latitude: 41.61829,
+       Longitude: -111.94126,
+      name: "Afghanistan"
+    },{
+      Latitude: 52.75235, Longitude: -29.57541,
+      name:"Xandar"
+    },
+    {
+      Latitude: 33.84501, Longitude: -52.86823,name:"Citadel"
+    },{
+      Latitude: 22.10288, Longitude: 63.09014,name:"Sanctum Sanctorum"
+    }
   ];
   /* eslint-disable */
   useEffect(() => {

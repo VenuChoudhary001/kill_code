@@ -10,6 +10,7 @@ export const PROVIDER = ({ children }) => {
 
   const navigate=useNavigate();
 
+  const [leaderCall,setLeaderCall]=useState(true);
 
   const [status, setStatus] = useState();
   // For navbar active setup
@@ -64,7 +65,7 @@ export const PROVIDER = ({ children }) => {
         setCurrRound,
         user,
         setUser,
-        setApiCall,status, setStatus
+        setApiCall,status, setStatus,leaderCall,setLeaderCall
       }}
     >
       {children}

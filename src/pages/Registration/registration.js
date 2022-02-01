@@ -98,7 +98,7 @@ function Registration() {
 
           if (data.token && data.token !== undefined) {
             localStorage.setItem("tkn", data.token);
-            navigate("/timer/");
+            navigate("/game");
           } else {
             console.log("error");
           }
