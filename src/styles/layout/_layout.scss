@@ -5,7 +5,7 @@ html {
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
-    overflow-x: hidden;
+    // overflow-x: hidden;
     // &::-webkit-scrollbar{
     //   display: none;
     // }
@@ -28,9 +28,9 @@ html {
       }
 }
 
-body{
-  overflow-x: hidden;
-}
+// body{
+//   overflow-x: hidden;
+// }
 
 .background {
   height: 100%;
