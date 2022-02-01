@@ -35,9 +35,8 @@ const LEADERBOARD = () => {
  
   /*eslint-disable */
   useEffect(()=>{
+    getData();
     if(leaderCall){
-
-      getData();
       setLeaderCall(!leaderCall);
     }
      if (

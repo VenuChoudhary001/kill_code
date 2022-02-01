@@ -92,6 +92,7 @@ const GAME = () => {
     return <Loading />;
   }
 
+ 
   if (currRound && currRound.message === "No rounds live") {
     return (
       <>
