@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react";
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+// import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import { useNavigate } from "react-router-dom";
 import STORE from "../../Context/store";
 
@@ -93,17 +93,18 @@ const LOCATIONS = () => {
     <>
       {/* <Navbar  /> */}
       <section className="map-container">
-        <MapContainer
+        <img src="map.png" alt=""/>
+        {/* <MapContainer
           center={[51.505, -0.09]}
           style={{ height: 500, zIndex: 1 }}
           zoom={3}
           scrollWheelZoom={true}
         >
           <TileLayer
-            attribution='&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>,&copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
-            url="https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png"
-      //       attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-      // url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            // attribution='&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>,&copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
+            // url="https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png"
+            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+      url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
 
           {data.map((item) => (
@@ -111,7 +112,7 @@ const LOCATIONS = () => {
               <Popup>{item.name}</Popup>
             </Marker>
           ))}
-        </MapContainer>
+        </MapContainer> */}
       </section>
     </>
   );
