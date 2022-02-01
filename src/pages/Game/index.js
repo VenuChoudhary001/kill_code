@@ -98,9 +98,9 @@ const GAME = () => {
                 <br />
               </div>
               <CountDown end={currRound.next_round_start_time} />
-              <div className="ans_">
+            {currRound.next_round!=="1" &&  <div className="ans_">
 
-              {currRound.flag == 0 && (
+              { currRound.flag == 0 && (
                 <>
                   YOU HAVE FAILED
                   <div className="opinion">
@@ -110,7 +110,7 @@ const GAME = () => {
               )}
               {currRound.flag == 1 && <>YOU SAVED THE DAY</>}
             
-              {
+              {currRound.next_round!=="1" &&
                 <div className="info-evi">
                   THeses are the hjghjhkj
                   <div>
@@ -125,7 +125,7 @@ const GAME = () => {
                   </div>
                 </div>
               }
-                 </div>
+                 </div>}
               {currRound.next_round == 1 && (
                 <div className="container">
                   <div className="fore-word">
