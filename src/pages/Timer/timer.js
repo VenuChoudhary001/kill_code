@@ -33,7 +33,7 @@ function TIMER() {
           localStorage.removeItem("tkn");
           setUser({});
           navigate("/");
-          console.log(response);
+ 
         } else {
           localStorage.removeItem("tkn");
           setUser({});

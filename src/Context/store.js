@@ -35,7 +35,7 @@ export const PROVIDER = ({ children }) => {
       let result=await res.json();
       setCurrRound(result);
     } catch (error) {
-      console.log(error);
+   
       setCurrRound(error)
     }
   };

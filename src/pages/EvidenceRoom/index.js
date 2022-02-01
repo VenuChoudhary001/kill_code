@@ -24,12 +24,12 @@ const EVIDENCE_ROOM = () => {
         headers: headers,
         method: "GET",
       });
-      // console.log(res.data);
+    
       let result = await res.json();
-      console.log(result);
+    
       setEvidence(result);
     } catch (error) {
-      console.log(error);
+     
       if (error.status === 401) {
         localStorage.removeItem("tkn");
         setActive(null);

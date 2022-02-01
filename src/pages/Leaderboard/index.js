@@ -21,10 +21,10 @@ const LEADERBOARD = () => {
       let res = await axios.get(`${BASE_URL}quiz/leaderboard`, {
         headers: { ...headers },
       });
-       console.log(res.data);
+    
       setData(res.data);
     } catch (error) {
-      console.log(error.response);
+   
       if(error.status===401){
         localStorage.removeItem("tkn");
         setActive(null)

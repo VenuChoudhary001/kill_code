@@ -50,7 +50,7 @@ function Registration() {
 
   const submitReg = async () => {
     audio.play();
-    console.log(form);
+
     const dat = {
       user: {
         password: user.password,
@@ -73,7 +73,7 @@ function Registration() {
       participant4_dc: form.participant4_dc,
       participant4_phone: form.participant4_phone,
     };
-    console.log(dat);
+
     fetch(`${BASE_URL}quiz/register`, {
       method: "POST",
       headers: {
@@ -83,9 +83,9 @@ function Registration() {
     })
       .then(async (response) => {
         if (response.status !== 200) {
-          console.log(response);
+        
           const resp = await response.json();
-          console.log(resp);
+      
           if (resp.participant1_email) setMsg(resp.participant1_email[0]);
           else if (resp.participant2_email) setMsg(resp.participant2_email[0]);
           else if (resp.participant3_email) setMsg(resp.participant3_email[0]);
@@ -94,7 +94,7 @@ function Registration() {
           else setMsg(resp);
         } else {
           const data = await response.json();
-          console.log("Success:", data);
+       
 
           if (data.token && data.token !== undefined) {
             localStorage.setItem("tkn", data.token);

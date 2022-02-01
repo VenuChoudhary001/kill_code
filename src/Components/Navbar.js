@@ -221,9 +221,9 @@ const Navbar = () => {
           <img src={"kc.svg"} onClick={()=>navigate("/",{replace:true})} />
         </div>
         {navContent}
-        <div className="log-out" onClick={handleLogOut}>
+        {localStorage.getItem("tkn") && localStorage.getItem("tkn")!==undefined &&<div className="log-out" onClick={handleLogOut}>
                  LOG OUT
-              </div>
+              </div>}
       </section>
       <section className="nav-mob">
         {!show && (
@@ -275,9 +275,9 @@ const Navbar = () => {
                 </svg>
               </div>
               {navContent}
-              <div className="log-out"onClick={handleLogOut}>
+              {localStorage.getItem("tkn") && localStorage.getItem("tkn")!==undefined &&<div className="log-out" onClick={handleLogOut}>
                  LOG OUT
-              </div>
+              </div>}
             </main>
           </>
         )}

@@ -37,7 +37,7 @@ const GAME = () => {
       if (data.message === "Answer saved successfully.") {
         setStatus(data);
       }
-      console.log(data);
+    
     } catch (error) {
       console.log(error);
     }
@@ -65,10 +65,10 @@ const GAME = () => {
         method: "GET",
       });
       let result = await res.json();
-      console.log(result);
+    
       setCurrRound(result);
     } catch (error) {
-      console.log(error);
+    
       if (error.status == 401) {
         localStorage.removeItem("tkn");
         navigate("/", { replace: true });

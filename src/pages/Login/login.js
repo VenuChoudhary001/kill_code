@@ -30,14 +30,13 @@ function Login() {
   const submitLog = async () => {
     setShow(!show)
     audio.play();
-    console.log(form);
+
     const dat = {
       team : {
         team_name: form.username,
       },
       password: form.password,
     }
-    console.log(dat);
     fetch(`${BASE_URL}quiz/login`, {
       method: "POST",
       headers: {
@@ -48,13 +47,10 @@ function Login() {
       .then(async (response) => 
       {
       if (response.status !== 200) {
-        console.log(response);
-        const resp = await response.json();
-        setMsg(resp);
-        console.log(resp)
+        setMsg("Wrong Credentials");
       } else {
         const data = await response.json();
-        console.log("Success:", data);
+    
 
         if (data.token && data.token !== undefined) {
           localStorage.setItem("tkn", data.token);
@@ -70,6 +66,7 @@ function Login() {
         console.error("Error:", error);
         setShow(false);
       });
+      setShow(false);
   }
 
 

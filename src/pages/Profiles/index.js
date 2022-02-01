@@ -22,7 +22,7 @@ const PROFILES = () => {
         Authorization: "Token " + localStorage.getItem("tkn"),
       };
       let res=await axios.get(`${BASE_URL}quiz/profiles`,{headers:headers});
-      console.log(res.data);
+   
       setProfiles(res.data);
     } catch (error) {
       if(error.status===401){
