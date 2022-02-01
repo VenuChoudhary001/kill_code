@@ -1,20 +1,25 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect ,useContext} from "react";
 import { useNavigate } from "react-router-dom";
 import { BASE_URL } from "../../constants";
+import STORE from "../../Context/store";
 import HEADER from "../../Layout/header";
 import "./registration.scss";
 
 function Registration() {
   const navigate = useNavigate();
-
+  const {setActive}=useContext(STORE);
   let audio = new Audio("among.mp3");
 
+  /* eslint-disable */
   useEffect(() => {
     if (
       localStorage.getItem("tkn") &&
       localStorage.getItem("tkn") !== undefined
     )
-      navigate("/game");
+      {
+        navigate("/game");
+        setActive(null)
+    }
   }, [navigate]);
 
   const [msg, setMsg] = useState("");

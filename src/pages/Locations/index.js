@@ -1,10 +1,11 @@
-import React, { useEffect } from "react";
-// import Navbar from "../../Components/Navbar";
+import React, { useContext, useEffect } from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import { useNavigate } from "react-router-dom";
+import STORE from "../../Context/store";
 
 const LOCATIONS = () => {
   const navigate = useNavigate();
+  const {setActive}=useContext(STORE);
   const data = [
     {
       name: "Wakanda",
@@ -73,7 +74,7 @@ const LOCATIONS = () => {
       !localStorage.getItem("tkn") ||
       localStorage.getItem("tkn") === undefined
     )
-      navigate("/");
+     {setActive(null); navigate("/");}
   }, []);
   return (
     <>
@@ -88,6 +89,8 @@ const LOCATIONS = () => {
           <TileLayer
             attribution='&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>,&copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
             url="https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png"
+      //       attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+      // url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
 
           {data.map((item) => (

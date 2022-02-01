@@ -54,19 +54,26 @@
         transform: skewX(-5deg);
         cursor: pointer;
     }
-    .icon{
-        @include flexCenter;
-        svg{
-            width: 18px;
-            height: 18px;
-            @media screen and (max-width:600px) {
-             width: 12px;
-             height: 12px;
-            }
-             path{
-
-                 fill: #C4C4C4;
+    .rank-score{
+         @include flexCenter;
+         .score{
+             margin-right: 10px;
+             font-weight: bold
+         }
+        .icon{
+            @include flexCenter;
+            svg{
+                width: 18px;
+                height: 18px;
+                @media screen and (max-width:600px) {
+                 width: 12px;
+                 height: 12px;
                 }
+                 path{
+    
+                     fill: #C4C4C4;
+                    }
+            }
         }
     }
 }

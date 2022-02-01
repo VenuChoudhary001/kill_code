@@ -11,13 +11,14 @@ import { useNavigate } from "react-router-dom";
 import Loading from "../../Components/Loading";
 
 const GAME = () => {
-  const { currRound, status, setStatus, setCurrRound } = useContext(STORE);
+  const { currRound, status, setStatus,setActive, setCurrRound } = useContext(STORE);
 
   const [location, setLocation] = useState("");
   const [victim, setVictim] = useState("");
-
+  const [load,setLoad]=useState(false);
   /* eslint-disable */
   const getStatus = async () => {
+    setLoad(true);
     try {
       let headers = {
         "Content-Type": "application/json",
@@ -40,6 +41,7 @@ const GAME = () => {
     } catch (error) {
       console.log(error);
     }
+    setLoad(false);
   };
 
   const handleSubmit = (e) => {
@@ -80,7 +82,10 @@ const GAME = () => {
       !localStorage.getItem("tkn") ||
       localStorage.getItem("tkn") === undefined
     )
-      navigate("/");
+     { setActive(null);
+       navigate("/");
+    
+    }
   }, []);
 
   if (!currRound) {
@@ -98,21 +103,24 @@ const GAME = () => {
                 <br />
               </div>
               <CountDown end={currRound.next_round_start_time} />
+              <br/>
             {currRound.next_round!=="1" &&  <div className="ans_">
 
-              { currRound.flag == 0 && (
-                <>
-                  YOU HAVE FAILED
-                  <div className="opinion">
-                    {currRound.correct_ans} has been killed
-                  </div>
-                </>
-              )}
-              {currRound.flag == 1 && <>YOU SAVED THE DAY</>}
-            
+              { currRound.flag_1 === "0" ? (
+                <div style={{fontSize:"1.2rem"}}>
+                  You have failed to save the victim
+                  
+                </div>
+              ):(<div style={{fontSize:"1.2rem"}}>You succeeded in saving the victim</div>)}
+              <div className="opinion">
+              {currRound.flag_2 === "1" && currRound.flag_1==="0" && "The victim has been saved by some other people.The killer however is still out there and had sent his henchman to do the deed. These are the things we could retrieve from the henchman, i.e. the notes he was told to leave at the crime scene and the weapons he was going to use."}                  
+              
+            </div>
               {currRound.next_round!=="1" &&
                 <div className="info-evi">
-                  THeses are the hjghjhkj
+                   {currRound.correct_ans}<br/>
+                   {currRound.flag_2==="0" && currRound.flag_1==="0" && "The killer has left these in the crime scene. Think and mark your steps carefully."}
+                   {currRound.flag_1==="1" && "The killer however is still out there and had sent his henchman to do the deed. These are the things we could retrieve from the henchman, i.e. the notes he was told to leave at the crime scene and the weapons he was going to use."}
                   <div>
                     <img
                       src={`${BASE_URL}media/${currRound.encrypt_img}`}
@@ -164,6 +172,12 @@ const GAME = () => {
       </>
     );
   }
+  
+
+  if(load){
+    return <><Loading/></>
+  }
+
 
   return (
     <>

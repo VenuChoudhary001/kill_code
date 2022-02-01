@@ -155,6 +155,9 @@ const Navbar = () => {
   /* eslint-disable */
   useEffect(() => {
     switch (window.location.pathname) {
+      case "/":
+        setActive(null)
+        break;
       case "/game":
         setActive(0);
         break;
@@ -200,13 +203,14 @@ const Navbar = () => {
   const handleLogOut = () => {
     localStorage.removeItem("tkn");
     setShow(!show);
+    setActive(null);
     navigate("/login");
   };
   return (
     <>
       <section className="nav">
         <div className="brand-name" >
-          <img src={"kc.svg"} />
+          <img src={"kc.svg"} onClick={()=>navigate("/",{replace:true})} />
         </div>
         {navContent}
         <div className="log-out" onClick={handleLogOut}>

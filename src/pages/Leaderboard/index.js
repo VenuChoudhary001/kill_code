@@ -1,4 +1,4 @@
-import React, {useState,useEffect } from "react";
+import React, {useState,useEffect,useContext } from "react";
 import axios from "axios";
 import { BASE_URL } from "../../constants";
 import List from "../../Components/List";
@@ -6,10 +6,10 @@ import List from "../../Components/List";
 import SubNav from "../../Components/SubNav";
 import { useNavigate } from "react-router-dom";
 import Loading from "../../Components/Loading";
-
+import STORE from "../../Context/store";
 
 const LEADERBOARD = () => {
-  // const { data } = useContext(STORE);
+  const { setActive } = useContext(STORE);
   const [data,setData]=useState();
   const navigate=useNavigate();
   const getData = async () => {
@@ -27,6 +27,7 @@ const LEADERBOARD = () => {
       console.log(error.response);
       if(error.status===401){
         localStorage.removeItem("tkn");
+        setActive(null)
         navigate('/',{replace:true});
       }
     }
@@ -39,7 +40,7 @@ const LEADERBOARD = () => {
       !localStorage.getItem("tkn") ||
       localStorage.getItem("tkn") === undefined
     )
-      navigate("/");
+   {setActive(null);   navigate("/");}
   },[])
   if(!data){
     return <Loading/>

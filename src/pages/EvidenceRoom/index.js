@@ -8,7 +8,7 @@ import SubNav from "../../Components/SubNav";
 import { BASE_URL } from "../../constants";
 import STORE from "../../Context/store";
 const EVIDENCE_ROOM = () => {
-  const { currRound } = useContext(STORE);
+  const { currRound,setActive } = useContext(STORE);
   const [show, setShow] = useState(false);
 
   const [evidence, setEvidence] = useState();
@@ -32,6 +32,7 @@ const EVIDENCE_ROOM = () => {
       console.log(error);
       if (error.status === 401) {
         localStorage.removeItem("tkn");
+        setActive(null);
         navigate("/", { replace: true });
       }
     }
@@ -43,7 +44,8 @@ const EVIDENCE_ROOM = () => {
       !localStorage.getItem("tkn") ||
       localStorage.getItem("tkn") === undefined
     )
-      navigate("/");
+     {setActive(null);
+        navigate("/");}
   }, []);
 
   if (!evidence) {
@@ -51,19 +53,16 @@ const EVIDENCE_ROOM = () => {
   }
 
   const contentNote = () => {
-    const note = evidence.evidences.map((item, index) => 
-     item.killer_msg
-    );
-    console.log(note);
+    if(!evidence.killer_note){
+      return<><div className="info">NO NOTES AVAILABLE</div></>
+    }
+    const note =evidence && evidence.killer_note && evidence.killer_note;
     return (
       <>
-      <div className="note-title">NOTES FROM THE KILLER</div>
+      <div className="note-title">NOTES FROM THE KILLER  </div>
       <div className="note_killer_modal">
-        {note.length > 0 ? (
-          note.map(item=><li>{item}</li>)
-        ) : (
-          <div className="info">NO NOTES AVAILABLE</div>
-        )}
+         {note}
+       
       </div>
       </>
     );
@@ -73,8 +72,25 @@ const EVIDENCE_ROOM = () => {
     <>
       <SubNav />
       <section className="container">
-        <div className="notes_killer" onClick={() => setShow(!show)}>
-          NOTES FROM THE KILLER{" "}
+        <div className="list" onClick={() => setShow(!show)}>
+        <div className="title">
+
+        KILLER'S NOTE
+        </div>
+        <div className="icon">
+          <svg
+            width="13"
+            height="20"
+            viewBox="0 0 13 20"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M11.0141 11.2016L12.216 9.99971L2.59911 0.382812L0.195312 2.78661L7.40671 9.99971L0.195312 17.2128L2.59911 19.6166L11.0141 11.2016Z"
+              fill="white"
+            />
+          </svg>
+        </div>
         </div>
         {evidence &&
           evidence.evidences.map((item, index) => (

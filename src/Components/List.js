@@ -46,6 +46,8 @@ const List = ({type,item}) => {
   
     return (
       <article className="evidence">
+      {item.killer_msg &&<>  <div className="heading">NOTES FROM THE KILLER</div>
+        <div dangerouslySetInnerHTML={{__html:`${item.killer_msg}`}} className="info"/></>}
         <div className="heading">RIDDLE</div>
         <div dangerouslySetInnerHTML={{__html:`${item.riddle}`}} className="info"/>
         {item.correct_ans && <div className="correct_ans">Victim : {item.correct_ans}</div>}
@@ -63,7 +65,7 @@ const List = ({type,item}) => {
         <div className="team-logo">
           <img src={Skull} alt="" />
         </div>
-        <div>Score : {item.score}</div>
+        <div className="score">Score : {item.score}</div><br/>
         <div className="heading">{item.name}</div>
         <ul>
           {item.participant_array.map((item, index) => (
@@ -84,6 +86,8 @@ const List = ({type,item}) => {
           {item.avatar_url && <img src={`${BASE_URL}media/${item.avatar_url}`} alt="" />}
           {item.title || (item.round_no &&`ROUND ${item.round_no}`) || item.name}
         </div>
+        <div className="rank-score">
+{type==="team" && <div className="score">{item.score}</div>}
         <div className="icon">
           <svg
             width="13"
@@ -97,6 +101,7 @@ const List = ({type,item}) => {
               fill="white"
             />
           </svg>
+        </div>
         </div>
       </main>
       {show && <Modal content={content} setShow={() => setShow(!show)} />}
