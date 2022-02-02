@@ -4,7 +4,7 @@ import Registration from "./pages/Registration/registration";
 import Login from "./pages/Login/login";
 import Timer from "./pages/Timer/timer";
 import EVIDENCE_ROOM from "./pages/EvidenceRoom";
-import PROFILES from "./pages/Profiles";
+// import PROFILES from "./pages/Profiles";
 import GAME from "./pages/Game";
 import LOCATIONS from "./pages/Locations";
 import LEADERBOARD from "./pages/Leaderboard";
