@@ -60,7 +60,7 @@ const KILL_CODE = () => {
       headers: { ...headers },
     });
     let result= await res.json();
-    if(result===0){
+    if(result==="0"){
       setMsg("GAME HAS ENDED");
     }
   };
