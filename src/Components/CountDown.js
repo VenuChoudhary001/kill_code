@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import STORE from "../Context/store";
 
 const CountDown = ({end}) => {
-  const {setApiCall,currRound,setStatus,setLeaderCall}=useContext(STORE);
+  const {setApiCall,currRound,setStatus,setLeaderCall,leaderCall}=useContext(STORE);
   const [hours, setHours] = useState(0);
   const [mins, setMins] = useState(0);
   const [sec, setSec] = useState(0);
@@ -51,7 +51,9 @@ const CountDown = ({end}) => {
       };
 
   }, []);
-
+  if(sec<=0 && hours<=0 && day<=0 && mins<=0){
+    return <></>
+  }
   return (
     <>
      { <main className="countdown">
