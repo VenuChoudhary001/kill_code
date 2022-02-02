@@ -12,7 +12,7 @@ import Loading from "../../Components/Loading";
 
 const GAME = () => {
   const { currRound, status, setStatus,setActive, setCurrRound } = useContext(STORE);
-  const [end,setEnd]=useState(false);
+  
   const [location, setLocation] = useState("");
   const [victim, setVictim] = useState("");
   const [load,setLoad]=useState(false);
@@ -86,17 +86,15 @@ const GAME = () => {
        navigate("/");
     
     }
-    if(localStorage.getItem('end') && localStorage.getItem('end')!==undefined){
-        setEnd(true);
-    }
+   
   
   }, []);
 
-  if(end){
-    return<>
+  if(localStorage.getItem("end")){
+    return <>
     <div className="container">
-      <div className="kill-code">
-        GAME HAS ENDED
+      <div className="game">
+        <div className="info-text">GAME HAS ENDED</div>
       </div>
     </div>
     </>
@@ -147,6 +145,17 @@ const GAME = () => {
                     />
                   </div>
                 </div>
+              }
+              {
+                currRound.next_round==="5" && <div className="info-evi">The DS PD has received another note from the killer. We are making it public in the hopes that all of you can shed some light on the mystery and help us save the future victims.
+                  <br/>
+                  <br/>
+                <strong>
+                  
+                NOTE FROM KILLER
+                </strong>
+                <br/>
+                Your efforts to save the victims disgust me. The world shall be purged of them, and I will not stop till I have achieved my goal. I have widened my locations. You will fail the sinners who count on you to save them.</div>
               }
                  </div>}
               {currRound.next_round == 1 && (

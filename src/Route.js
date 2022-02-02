@@ -4,7 +4,7 @@ import Registration from "./pages/Registration/registration";
 import Login from "./pages/Login/login";
 import Timer from "./pages/Timer/timer";
 import EVIDENCE_ROOM from "./pages/EvidenceRoom";
-// import PROFILES from "./pages/Profiles";
+ import PROFILES from "./pages/Profiles";
 import GAME from "./pages/Game";
 import LOCATIONS from "./pages/Locations";
 import LEADERBOARD from "./pages/Leaderboard";
@@ -18,7 +18,7 @@ const ReactRouterSetup = () => {
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/timer" element={<Timer />} />
           <Route exact path="/evidence" element={<EVIDENCE_ROOM />} />
-          {/* <Route exact path="/profiles" element={<PROFILES />} /> */}
+          <Route exact path="/profiles" element={<PROFILES />} />
           {/* <Route exact path="/rules" element={<RULES />} /> */}
           <Route exact path="/game" element={<GAME />} />
           <Route exact path="/locations" element={<LOCATIONS />} />

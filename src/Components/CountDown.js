@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import STORE from "../Context/store";
 
 const CountDown = ({end}) => {
-  const {setApiCall,currRound,setStatus,setLeaderCall,leaderCall}=useContext(STORE);
+  const {setApiCall,currRound,setStatus,setLeaderCall,leaderCall,setEndGame}=useContext(STORE);
   const [hours, setHours] = useState(0);
   const [mins, setMins] = useState(0);
   const [sec, setSec] = useState(0);
@@ -43,6 +43,12 @@ const CountDown = ({end}) => {
           setApiCall(true);
           setLeaderCall(!leaderCall)
           setStatus();
+        }
+        if(currRound.kill_code_time && new Date().getTime() >= new Date(currRound.kill_code_time).getTime()){
+           localStorage.setItem("end",true);
+           setEndGame(localStorage.getItem("end"));
+        }else{
+          localStorage.removeItem("end");
         }
       }, 1000);
       

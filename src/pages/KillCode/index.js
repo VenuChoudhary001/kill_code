@@ -11,8 +11,9 @@ const KILL_CODE = () => {
   const navigate = useNavigate();
   const [code, setCode] = useState();
   const [msg, setMsg] = useState();
-  const { setActive, currRound } = useContext(STORE);
+  const { setActive, currRound ,endGame} = useContext(STORE);
   const [loading, setLoading] = useState(false);
+  const [show,setShow]=useState();
   const getData = async () => {
     try {
       let headers = {
@@ -62,13 +63,22 @@ const KILL_CODE = () => {
     let result= await res.json();
     if(result==="0"){
       setMsg("GAME HAS ENDED");
-      localStorage.setItem("end",true);
+      
+    }
+    if(result==="1"){
+      localStorage.removeItem("end");
+      setShow(false);
     }
   };
    /*eslint-disable */
   useEffect(() => {
     apiCall();
-  }, []);
+    if(localStorage.getItem("end") &&  localStorage.getItem("end")!==undefined){
+      setShow(true);
+    }else{
+      setShow(false);
+    }
+  }, [endGame]);
 
   /* eslint-disable */
   useEffect(() => {
@@ -97,12 +107,19 @@ const KILL_CODE = () => {
       </>
     );
   }
+  if(show){
+    return <>
+    <section className="container">
+    <main className="kill-code">GAME HAS ENDED</main>
+  </section>
+    </>
+  }
   return (
     <>
       {/* <Navbar/> */}
       <section className="container">
         {currRound && currRound.kill_code_time && (
-          <CountDown end={currRound.kill_code_time} /> 
+          <CountDown end={currRound.kill_code_time}/> 
         )}<br/>
         <main className="kill-code">
           {msg && <div>The answer you entered was {msg}</div>}

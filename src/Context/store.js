@@ -7,7 +7,6 @@ const STORE = React.createContext();
 
 
 export const PROVIDER = ({ children }) => {
-
   const navigate=useNavigate();
   const [leaderCall,setLeaderCall]=useState(true);
   const [status, setStatus] = useState();
@@ -19,7 +18,7 @@ export const PROVIDER = ({ children }) => {
 
   const [apiCall, setApiCall] = useState(true);
   
-
+  const [endGame,setEndGame]=useState(localStorage.getItem("end"));
   const getData = async () => {
     try {
       let headers = {
@@ -63,7 +62,7 @@ export const PROVIDER = ({ children }) => {
         setCurrRound,
         user,
         setUser,
-        setApiCall,status, setStatus,leaderCall,setLeaderCall
+        setApiCall,status, setStatus,leaderCall,setLeaderCall,endGame,setEndGame
       }}
     >
       {children}
