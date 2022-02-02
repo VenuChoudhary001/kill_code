@@ -18,7 +18,7 @@ const ReactRouterSetup = () => {
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/timer" element={<Timer />} />
           <Route exact path="/evidence" element={<EVIDENCE_ROOM />} />
-          <Route exact path="/profiles" element={<PROFILES />} />
+          {/* <Route exact path="/profiles" element={<PROFILES />} /> */}
           {/* <Route exact path="/rules" element={<RULES />} /> */}
           <Route exact path="/game" element={<GAME />} />
           <Route exact path="/locations" element={<LOCATIONS />} />

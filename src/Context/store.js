@@ -9,9 +9,7 @@ const STORE = React.createContext();
 export const PROVIDER = ({ children }) => {
 
   const navigate=useNavigate();
-
   const [leaderCall,setLeaderCall]=useState(true);
-
   const [status, setStatus] = useState();
   // For navbar active setup
   const [active, setActive] = useState(0);

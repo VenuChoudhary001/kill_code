@@ -11,7 +11,7 @@ const Navbar = () => {
   let navItem = [
     "game",
     "evidence",
-    "profiles",
+    // "profiles",
     "locations",
    
     "leaderboard",

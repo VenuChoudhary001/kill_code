@@ -62,6 +62,7 @@ const KILL_CODE = () => {
     let result= await res.json();
     if(result==="0"){
       setMsg("GAME HAS ENDED");
+      localStorage.setItem("end",true);
     }
   };
    /*eslint-disable */
@@ -106,7 +107,7 @@ const KILL_CODE = () => {
         <main className="kill-code">
           {msg && <div>The answer you entered was {msg}</div>}
           <div className="kill-title">ENTER KILL CODE</div>
-          {currRound && currRound.kill_code_time &&  <div className="line1">heloooooooooooooo</div>}
+          {currRound && currRound.kill_code_time &&  <div className="line1"></div>}
           <TextBox
             action={(e) => setCode(e.target.value)}
             placeholder={"KILLCODE"}

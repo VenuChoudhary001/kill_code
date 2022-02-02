@@ -12,7 +12,7 @@ import Loading from "../../Components/Loading";
 
 const GAME = () => {
   const { currRound, status, setStatus,setActive, setCurrRound } = useContext(STORE);
-
+  const [end,setEnd]=useState(false);
   const [location, setLocation] = useState("");
   const [victim, setVictim] = useState("");
   const [load,setLoad]=useState(false);
@@ -86,7 +86,21 @@ const GAME = () => {
        navigate("/");
     
     }
+    if(localStorage.getItem('end') && localStorage.getItem('end')!==undefined){
+        setEnd(true);
+    }
+  
   }, []);
+
+  if(end){
+    return<>
+    <div className="container">
+      <div className="kill-code">
+        GAME HAS ENDED
+      </div>
+    </div>
+    </>
+  }
 
   if (!currRound) {
     return <Loading />;
@@ -178,8 +192,8 @@ const GAME = () => {
   if(load){
     return <><Loading/></>
   }
-
-
+  
+  
   return (
     <>
       {/* <Navbar /> */}
