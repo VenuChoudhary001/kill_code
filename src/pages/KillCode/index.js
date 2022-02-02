@@ -49,18 +49,23 @@ const KILL_CODE = () => {
     }
   };
 
-  /*eslint-disable */
-  useEffect(() => {
-    const apiCall = async () => {
-      let res = await fetch(`${BASE_URL}quiz/killcode`, {
-        method: "GET",
-        headers: { ...headers },
-      });
-      let result= await res.json();
-      if(result==0){
-        setMsg("GAME HAS ENDED");
-      }
+ 
+  const apiCall = async () => {
+    let headers = {
+      "Content-Type": "application/json",
+      Authorization: "Token " + localStorage.getItem("tkn"),
     };
+    let res = await fetch(`${BASE_URL}quiz/killcode`, {
+      method: "GET",
+      headers: { ...headers },
+    });
+    let result= await res.json();
+    if(result==0){
+      setMsg("GAME HAS ENDED");
+    }
+  };
+   /*eslint-disable */
+  useEffect(() => {
     apiCall();
   }, []);
 
